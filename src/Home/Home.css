@@ -1,0 +1,592 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* start home section */
+
+.home{
+    background-image: url("../../public/img/blog-1.jpeg");
+    background-position: center;
+    background-size: cover;
+   height: 620px;
+   padding: 70px 0;
+   margin-top: 65px;
+}
+
+.medical{
+    margin-top:80px;
+    margin-left: 5px;
+   
+}
+
+.home a{
+ text-transform: capitalize;
+ margin-right: 9px;
+  font-size: 15px;
+}
+
+.home span{
+    color:rgb(14, 140, 237);
+}
+
+.home p{
+    margin-bottom: 20px;
+    word-spacing: 2px;
+   
+}
+
+.home h2{
+    color:black;
+    margin-bottom: 15px;
+     font-weight: 700px;
+}
+
+.home h5{
+    color:black;
+    margin-bottom: 20px;
+    font-weight: 700px;
+}
+
+
+
+/* end home section */
+
+
+/* start about home section */
+
+.about-home{
+    padding: 70px 0;
+}
+
+.about-home h2{
+    color:black;
+    font-weight: 600;
+}
+
+.about-home hr{
+    height: 5px;
+    background-color: #0984e3;
+    width:10%;
+}
+
+
+.about-home p{
+    color: black;
+    word-spacing: 2px;
+}
+
+.know{
+    color: #0f2250 !important;
+}
+
+.about-home img{
+    margin-top: 80px;
+}
+
+/* end about home section */
+
+/* start info home section */
+ 
+.info_home{
+  
+  background:linear-gradient(#74baff7c) , url("../../public/img/info-bg.jpg");
+    height: 300px;
+}
+
+.icon{
+    margin-top: 80px;
+}
+
+@media (max-width: 767px) {
+    .info_home {
+        background: #192a56;
+        padding: 70px 0;
+        margin-top: 10px;
+        height: auto;
+    }
+}
+
+/* end info home section */
+
+/* start video home section*/
+
+.video_home{
+    padding: 70px 0;
+    background-color: whitesmoke;
+}
+
+.video_home h2{
+    color: black;
+    font-weight: 600;
+}
+
+/*  start ال like ,unlike */
+
+.like-unlike-radio {
+  --inactive-color: #515254;
+  --active-color: #1877f2;
+  --hover: #515254;
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+  flex-shrink: 0;
+}
+.like-unlike-radio .custom-radio-fb {
+  display: none;
+}
+.like-unlike-radio .feedback-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--inactive-color);
+  margin: 0;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+.like-unlike-radio .feedback-label:hover {
+  color: var(--hover);
+}
+.icon {
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+}
+.like-unlike-radio .feedback-label:hover .icon {
+  transform: scale(1.3);
+}
+.like-unlike-radio .custom-radio-fb:checked ~ .feedback-label {
+  color: var(--active-color);
+}
+.like-unlike-radio .custom-radio-fb:checked ~ .feedback-label svg {
+  animation: keyframes-fill 0.2s ease-in-out;
+}
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+}
+
+
+/*  end ال like ,unlike */
+
+
+
+.time{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.112);
+    border-radius: 20px;
+    padding: 15px;
+    width: 80%;
+    margin-left: 70px;
+
+}
+
+.video_home h4{
+    color: black;
+    font-weight: 600;
+}
+
+.video_home p{
+    color: black;
+  margin-top: 5px;
+}
+
+.video_home span{
+    color:rgb(14, 140, 237);
+ 
+}
+
+
+
+@media (max-width: 575px) {
+    .video_home video {
+        width: 100%;
+       
+    }
+}
+
+/* علشان ال card تيجى فى النصف */
+@media (max-width: 575px) {
+    .video_home .time {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* end video home section*/
+
+
+
+
+
+/* start call home section */
+
+.call_home{
+  
+   background: linear-gradient(#28394ab1) , url("../../public/img/call-bg.jpg");
+   background-position: center;
+   background-size: cover;
+    height: 400px;
+    padding: 90px 0;
+}
+
+.call_home h2{
+    color: #282936;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+/*  start learn more */
+
+
+.call_home a:nth-of-type(2) {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ background: transparent;
+ padding: 0;
+ font-size: inherit;
+ font-family: inherit;
+}
+
+.call_home a:nth-of-type(2).learn-more {
+ width: 12rem;
+ height: auto;
+}
+
+.call_home a:nth-of-type(2).learn-more .circle {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ display: block;
+ margin: 0;
+ width: 3rem;
+ height: 3rem;
+ background: #282936;
+ border-radius: 1.625rem;
+}
+
+ .call_home a:nth-of-type(2).learn-more .circle .icon {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ margin: auto;
+ background: #fff;
+}
+
+ .call_home a:nth-of-type(2).learn-more .circle .icon.arrow {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ left: 0.625rem;
+ width: 1.125rem;
+ height: 0.125rem;
+ background: none;
+}
+
+.call_home a:nth-of-type(2).learn-more .circle .icon.arrow::before {
+ position: absolute;
+ content: "";
+ top: -0.29rem;
+ right: 0.0625rem;
+ width: 0.625rem;
+ height: 0.625rem;
+ border-top: 0.125rem solid #fff;
+ border-right: 0.125rem solid #fff;
+ transform: rotate(45deg);
+}
+.call_home a:nth-of-type(2).learn-more .button-text {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 0.75rem 0;
+ margin: 0 0 0 1.85rem;
+ color: #282936;
+ font-weight: 700;
+ line-height: 1.6;
+ text-align: center;
+ text-transform: uppercase;
+}
+
+.call_home a:nth-of-type(2):hover .circle {
+ width: 100%;
+}
+
+.call_home a:nth-of-type(2):hover .circle .icon.arrow {
+ background: #fff;
+ transform: translate(1rem, 0);
+}
+
+.call_home a:nth-of-type(2):hover .button-text {
+ color: #fff;
+}
+
+/* end learn more */
+
+
+.call_home a:nth-of-type(1){
+    font-size: 15px;
+}
+
+.call_home a{
+    text-transform: capitalize;
+}
+
+
+/* end call home section */
+
+
+
+/* start opinion home section */
+
+.opinion-home h2{
+    color:black;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.opinion-home{
+   
+    padding: 50px 0;
+}
+
+.opinion-home img{
+    border-radius: 50%;
+}
+
+
+.opinion-home h5{
+    color: black;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.opinion-home p{
+    color: black;
+}
+
+.opinion-home .row{
+    margin-top: 100px;
+}
+
+
+
+
+/* جديد */
+.cards{
+    position: relative;
+    background: #fff;
+    padding: 70px 20px 20px;
+    text-align: center;
+    border-radius: 10px;
+   
+    background-color:  #ecf0f1;    /* من عندى */
+  border-radius: 20px;                   /* من عندى */
+  margin-bottom: 90px;                 /* sm من عندى         هيفيد فى حجم الشاشه ال  */   
+
+}
+
+.cards img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;      /* يطلع نص الصورة فوق */
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid #fff;
+}
+
+/* جديد */
+
+
+
+
+@media(max-width:575px){
+
+    .opinion-home h2{
+        font-size: 25px;
+    }
+}
+
+
+
+/* end opinion home section */
+
+
+ /* start review section  */
+
+/* كارد جاهز  بدايه*/
+.card {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  ;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 190px;
+  height: 260px;
+  z-index: 2;
+  background: rgba(255, 255, 255, .95);
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid white;
+
+
+
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  opacity: 1;
+  filter: blur(12px);
+  animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+
+
+/* نهايه كارد جاهز */
+
+
+.review_home{
+  background-color: #192a56;
+padding: 70px 0;
+}
+
+
+/* بدايه النجوم جاهز*/
+
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  fill: #666;
+}
+
+.rating:not(:checked) > label > svg {
+  fill: #666; /* Set default color for SVG */
+  transition: fill 0.3s ease; /* Add a transition effect */
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  fill: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  fill: #ff9e0b;
+}
+
+.rating > input:checked ~ label > svg {
+  fill: #ffa723; /* Set color for selected stars */
+}
+
+
+
+/* نهايه النجوم جاهز */
+
+
+.review h5{
+  color:rgb(153, 37, 37);
+  font-weight: 600;
+}
+
+
+.review p{
+ color: black;
+ margin-bottom: 1px;
+}
+
+
+.review hr{
+ 
+ height: 5px;
+ background-color: #090f13;
+ width: 40%;
+}
+
+.review_home img{
+ border-radius: 20px;
+}
+
+.review_home input{
+  text-transform: capitalize;
+  width: 100px;
+}
+ /* end review section  */

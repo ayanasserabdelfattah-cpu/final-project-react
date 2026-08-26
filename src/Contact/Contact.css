@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.call-contact{
+    padding: 150px 0;
+    background-color: #192a56;
+}
+
+.call-contact h2{
+    color: white;
+}
+
+.call-contact p{
+    color: white;
+}
+
+.appointment-contact{
+    padding: 120px 0;
+   background-image: url(../../public/img/bg-home.jpg);
+   background-position: center;
+   background-size: cover;
+   height: 700px;
+}
+
+.appointment-contact input{
+    width: 50%;
+}
+
+.appointment-contact select{
+    width: 50%;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+
+.appointment-contact h3{
+    color: #192a56;
+    font-weight: 600;
+}
+
+
+.appointment-contact input:nth-of-type(5){
+   text-transform: capitalize;
+}
+
+.appointment-contact input:nth-of-type(6){
+   text-transform: capitalize;
+}
+
+
+/* dark mood */
+
+body.dark .call-contact{
+    background-color: black;
+
+}
