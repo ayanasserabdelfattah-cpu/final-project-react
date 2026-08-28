@@ -14,6 +14,14 @@ import Details from "./Details/Details";
 // import Services from "./Services/Services";
 import Contact from "./Contact/Contact";
 
+
+import NavDoctor from "./NavDoctor/NavDoctor";
+import DoctorAvailiability from "./DoctorAvailiability/DoctorAvailiability";
+import DoctorNotification from "./DoctorNotification/DoctorNotification";
+
+
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +41,14 @@ function App() {
         {/* <Route path="/department" element={<Department />} /> */}
         {/* <Route path="/services" element={<Services />} /> */}
         <Route path="/Contact" element={<Contact />} />
+
+
+        {/* صفحات ال Doctor */}
+            <Route path="/NavDoctor" element={<NavDoctor />} />
+            <Route path="/DoctorAvailiability" element={<DoctorAvailiability />} />
+            <Route path="/DoctorNotification" element={<DoctorNotification />} />
+
+
 
       </Routes>
     </BrowserRouter>
