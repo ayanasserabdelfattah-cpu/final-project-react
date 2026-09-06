@@ -1,0 +1,247 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Profile Section
+========================= */
+
+
+
+.profile {
+
+    background: #f5f9fd;
+    height: 800px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Profile Card */
+
+.profile-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+   
+}
+
+
+/* Title */
+
+.profile-title {
+    color: #74c0fc;
+    font-weight: 700;
+}
+
+
+/* Profile Image */
+
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 5px solid #74c0fc;
+
+    padding: 4px;
+
+    background: #ffffff;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Choose File */
+
+.choose-btn {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    background: #74c0fc;
+
+    color: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.choose-btn:hover {
+    background: #4dabf7;
+
+    transform: translateY(-2px);
+}
+
+.choose-btn i {
+    margin-right: 6px;
+}
+
+
+/* Hint */
+
+.image-hint {
+    margin-top: 8px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+/* Form */
+
+.profile-form {
+    margin-top: 30px;
+}
+
+.form-group {
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    width: 160px;
+
+    text-align: left;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+.form-group input {
+    flex: 1;    /* طول ال input */
+   
+
+    padding: 11px 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #74c0fc;
+
+    box-shadow: 0 0 0 3px rgba(116, 192, 252, 0.15);
+}
+
+
+/* Save Button */
+
+.save-btn {
+    margin-top: 15px;
+
+    padding: 12px 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #74c0fc;
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #4dabf7;
+
+    transform: translateY(-2px);
+}
+
+
+/* Responsive */
+
+@media (max-width: 576px) {
+
+    .profile-card {
+        padding: 25px 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        width: 100%;
+
+        margin-bottom: 6px;
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+
+}
+
+/* /////////////////// */
+
+.profile-actions {
+    display: none;
+    margin-top: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #74c0fc;
+    color: white;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+
+/* dark mood */
+body.dark .profile{
+
+    background-color: black;
+}
+
+body.dark .profile-card{
+
+    background-color:whitesmoke;
+}
+

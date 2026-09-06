@@ -1,0 +1,201 @@
+/* start welcome services section   */
+
+.welcome-services {
+background:linear-gradient(rgba(71, 69, 69, 0.55)) , url("../../public/img/empty-modern-hospital-corridor-clinic-hallway-interior-background-with-chairs-patient-s-bed_71956-1938.avif");
+ background-position: center;
+ background-size: cover;
+ height: 652px;
+    padding: 200px 0;
+    margin-top: 30px;
+}
+
+.welcome-services h2{
+ 
+     color: #dcdde1;
+     font-size: 50px;
+     font-weight: 700;
+     font-family: cursive;
+     margin-bottom: 20px;
+
+}
+.welcome-services p{
+ 
+     color: #dcdde1;
+     font-size: 20px;
+     font-weight: 700;
+     font-family: cursive;
+     word-spacing: 3px;
+
+}
+
+
+/* end welcome services section   */
+
+/* start  services section */
+
+.services h2{
+    color: #0f2250;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: cursive;
+}
+
+.services h6{
+    color:rgba(0, 0, 0, 0.61) ;
+    font-weight: 700;
+    font-family: cursive;
+}
+   
+
+.services{
+    padding: 80px 0;
+}
+
+.services-card{
+
+    border: 1px solid rgba(0, 0, 0, 0.194);
+    padding: 15px;
+    border-radius: 30px;
+    background-color: whitesmoke;
+
+}
+
+.services-card h2{
+    font-family: cursive;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #0f2250;
+}
+
+.services-card p{
+    font-family: cursive;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: rgba(0, 0, 0, 0.61);
+    word-spacing: 3px;
+    
+}
+   
+.care{
+    border: 1px solid  #0f2250;
+    border-radius: 50%;
+    padding: 15px;
+    transition: 0.3;
+   
+    
+}
+
+.care:hover{
+    transform: scale(1.1);
+    background-color: #40739e;
+}
+   
+/* بدايه الزرار */
+
+
+.animated-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+    border: 1px solid  #0f2250;
+  color: #0f2250;
+  box-shadow: 0 0 0 2px #ffffff20;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #2196F3;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px #2195f360;
+  color: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+
+
+
+
+/* نهايه الزرار */
+.image{
+    /* width: 500px; */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+/* اخفاء الصوره بدايه */
+     opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+  
+}
+
+.services .row:has(.animated-button:hover) .image {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* اخفاء الصوره واظهارها نهايه */
+
+
+
+@media(max-width:991px){
+
+
+    .image{
+        margin-top: 15px;
+    }
+}
+
+
+body.dark  .services{
+    background-color: black;
+    
+}
+
+body.dark  .services h6{
+  color: white;
+
+}
+
+/* end  services section */
+
+
+
+
+

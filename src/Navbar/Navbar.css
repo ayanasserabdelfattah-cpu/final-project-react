@@ -491,23 +491,15 @@ body.dark .opinion-home .cards{
   text-transform: capitalize;
 }
 
+.navbar_home button{
+  text-transform: capitalize;
+}
+
+
+
 
 
 /* end navbar home section */
 
 
-/* /////////////////////////////////////////////////////////////////// */
 
-/* المسفات لما بتحول ل ar */
-
-/* Dark Mode switch spacing */
-.navbar_home .switch {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-/* Arabic */
-html[dir="rtl"] .navbar_home .switch {
-    margin-left: 20px;
-    margin-right: 20px;
-}

@@ -14,8 +14,10 @@ import Home from "./Home/Home";
 import Doctors from "./Doctors/Doctors";
 import Details from "./Details/Details";
 // import Department from "./Department/Department";
-// import Services from "./Services/Services";
+import Services from "./Services/Services";
 import Contact from "./Contact/Contact";
+import PublicProfile from "./PublicProfile/PublicProfile";
+import PublicNotification from "./PublicNotification/PublicNotification";
 
 
 import NavDoctor from "./NavDoctor/NavDoctor";
@@ -45,8 +47,10 @@ function App() {
         <Route path="/Doctors" element={<Doctors />} />
         <Route path="/Details" element={<Details />} />
         {/* <Route path="/department" element={<Department />} /> */}
-        {/* <Route path="/services" element={<Services />} /> */}
+        <Route path="/Services" element={<Services />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/PublicProfile" element={<PublicProfile />} />
+        <Route path="/PublicNotification" element={<PublicNotification />} />
 
 
         {/* صفحات ال Doctor */}
