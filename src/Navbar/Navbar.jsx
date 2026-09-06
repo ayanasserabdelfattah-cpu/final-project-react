@@ -232,7 +232,7 @@ function Navbar() {
       </ul>
 
 
-
+<button class="btn btn-primary">Logout</button>
 
 
 
