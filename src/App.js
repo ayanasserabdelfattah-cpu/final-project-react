@@ -2,9 +2,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 import Welcome from "./Welcome/Welcome";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
+
+
 
 import Home from "./Home/Home";
 // import About from "./About/About";
@@ -25,12 +28,15 @@ import DoctorNotification from "./DoctorNotification/DoctorNotification";
 function App() {
   return (
     <BrowserRouter>
+
+ 
       <Routes>
 
         {/* الصفحات قبل تسجيل الدخول */}
         <Route path="/" element={<Welcome />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+      
 
 
         {/* صفحات الـ User */}

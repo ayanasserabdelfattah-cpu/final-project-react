@@ -16,8 +16,8 @@
     .nav-link{
         position: relative;
         transition: 0.3;
-        margin-left: 10px;
-        font-size: 18px;
+       margin-left: 4px;
+font-size: 16px;
     }
     
     .nav-link::after{
@@ -494,3 +494,20 @@ body.dark .opinion-home .cards{
 
 
 /* end navbar home section */
+
+
+/* /////////////////////////////////////////////////////////////////// */
+
+/* المسفات لما بتحول ل ar */
+
+/* Dark Mode switch spacing */
+.navbar_home .switch {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Arabic */
+html[dir="rtl"] .navbar_home .switch {
+    margin-left: 20px;
+    margin-right: 20px;
+}
