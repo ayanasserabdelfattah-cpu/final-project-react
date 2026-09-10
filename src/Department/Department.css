@@ -1,0 +1,305 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.department{
+    background:linear-gradient(rgba(0, 0, 0, 0.42)) ,
+    url(../../public/img/WhatsApp\ Image\ 2026-09-07\ at\ 3.31.32\ PM.jpeg );
+
+    background-position: center;
+    background-size: cover;
+
+    height: 640px;
+
+    margin-top: 50px;
+
+    position: relative;
+}
+
+
+.one{
+    margin-top: 110px;
+}
+
+.one h6{
+    color: blue;
+
+    letter-spacing: 3px;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.one h2{
+    color: white;
+
+    font-weight: 700;
+
+    margin-top: 15px;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.one p{
+    color: rgba(255, 255, 255, 0.559);
+
+    word-spacing: 2px;
+
+    margin-top: 15px;
+
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* ////////////////////////////////////////// */
+
+
+.title-services {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: 50%;
+    left: 70%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* كل Department */
+
+.department-item {
+    position: absolute;
+}
+
+
+/* اسم القسم */
+
+.department-item h5 {
+    color: white;
+
+    font-family: cursive;
+
+    margin: 0;
+}
+
+
+/* أماكن الأقسام */
+
+.department-item:nth-child(1) {
+    top: 30%;
+    left: 0;
+}
+
+.department-item:nth-child(2) {
+    top: 62%;
+    left: 0;
+}
+
+.department-item:nth-child(3) {
+    top: 93%;
+    left: 20%;
+}
+
+.department-item:nth-child(4) {
+    top: 25%;
+    left: 60%;
+}
+
+.department-item:nth-child(5) {
+    bottom: 0;
+    left: 80%;
+}
+
+.department-item:nth-child(6) {
+    Top: 83%;
+    left: 50%;
+}
+
+
+/* الكارت اللي بيظهر */
+
+.description {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    background: #273c75e5;
+    border: 1px solid #273c75ba;
+
+    width: 240px;
+
+    padding: 15px;
+
+    border-radius: 30px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.4s ease;
+}
+
+
+/* لما أعمل Hover على القسم */
+
+.department-item:hover .description {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.department-item h4{
+    color: white;
+}
+
+.department-item p{
+    color: white;
+}
+
+
+/* //////////////////////////////////////// */
+/*          RESPONSIVE فقط من هنا           */
+/* //////////////////////////////////////// */
+
+
+/* =========================================
+   TABLET
+   768px → 991px
+========================================= */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .department {
+        height: 700px;
+    }
+
+    .title-services {
+        width: 330px;
+        height: 400px;
+
+        left: 68%;
+    }
+
+    .department-item h5 {
+        font-size: 16px;
+    }
+
+    /* Department 1 */
+
+    .department-item:nth-child(1) {
+        top: 25%;
+        left: 0;
+    }
+
+    /* Department 2 */
+
+    .department-item:nth-child(2) {
+        top: 70%;
+        left: 0;
+    }
+
+    /* Department 3 */
+
+    .department-item:nth-child(3) {
+        top:99% ;
+        left: 30%;
+    }
+
+    /* Department 4 */
+
+    .department-item:nth-child(4) {
+        top: 10%;
+        left: 55%;
+    }
+
+    /* Department 5 */
+
+    .department-item:nth-child(5) {
+        top: 48%;
+        left: 70%;
+    }
+
+    /* Department 6 */
+
+    .department-item:nth-child(6) {
+        top: 90%;
+        left: 70%;
+    }
+
+    .description {
+        width: 220px;
+
+        padding: 15px;
+    }
+}
+
+
+/* =========================================
+   SMALL TABLET
+   
+========================================= */
+
+@media (max-width: 767px) {
+    .department {
+        height: auto;
+        padding: 50px 20px;
+        
+    }
+
+    .title-services {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        padding: 30px 0;
+    }
+
+    .department-item {
+        position: relative;
+
+        top: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+
+        width: 100%;
+
+        margin-bottom: 30px;
+    }
+
+    .department-item h5 {
+        font-size: 17px;
+    }
+
+    .description {
+        width: 100%;
+
+        max-width: 350px;
+
+        margin-top: 10px;
+
+        padding: 15px;
+
+        border-radius: 20px;
+    }
+
+    .description h4 {
+        font-size: 18px;
+    }
+
+    .description p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+}
+

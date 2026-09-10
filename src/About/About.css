@@ -1,0 +1,284 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.heart-about{
+    background-image: url(../../public/img/WhatsApp\ Image\ 2026-09-08\ at\ 9.46.11\ PM.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+    padding: 60px 0;
+    margin-top: 70px;
+}
+
+.contain{
+    margin-top: 80px;
+}
+
+
+.contain h2{
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #192a56;
+  word-spacing: 2px;
+  font-family: serif;
+}
+
+.contain p{
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.53);
+    word-spacing: 2px;
+
+}
+
+.contain span{
+  
+  color: rgba(255, 255, 0, 0.523);
+
+}
+
+.contain button{
+  
+  text-transform: capitalize;
+
+}
+
+
+/* /////////////////////////// */
+.heart-about.light-mode {
+    background-image: url("../../public/img/WhatsApp\ Image\ 2026-09-08\ at\ 9.46.10\ PM.jpeg");
+}
+
+@media(max-width:575px){
+    .heart-about button{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+/* start mission section */
+
+.mission-about{
+    padding: 80px 0;
+    
+}
+
+.mission-about h2{
+  font-weight: 700;
+  color: #192a56;
+  font-family: cursive;
+
+}
+
+.mission-about p{
+    font-family: cursive;
+    color: black;
+ 
+
+}
+
+.mission-about .row {
+    column-rule: 4px solid rgb(116, 192, 252);
+ 
+}
+
+
+body.dark .mission-about{
+    background-color: black;
+}
+
+body.dark .mission-about p{
+ color: white;
+}
+
+
+
+/* end mission section */
+
+
+/* start choose section */
+
+.choose-about{
+    padding: 80px 0;
+    background-color: whitesmoke;
+}
+
+
+.choose-about h2{
+    font-weight: 700;
+    color:#192a56;
+      word-spacing: 3px;
+    
+}
+
+
+.choose-about h3{
+    font-weight: 700;
+    color:#192a56;
+      word-spacing: 3px;
+
+}
+
+
+.choose-about p{
+   color: black;
+   font-family: cursive;
+  word-spacing: 3px;
+
+}
+
+
+.choose-about a{
+  text-transform: capitalize;
+
+}
+
+.choose{
+    margin-top: 100px;
+}
+
+
+body.dark .choose-about{
+    background-color: black;
+    border-top: 1px solid rgba(192, 192, 192, 0.279);
+}
+
+body.dark .choose-about p{
+color: white;
+}
+
+
+/* صور */
+
+.image-stack {
+    position: relative;
+    width: 400px;
+    height: 450px;
+    margin: auto;
+}
+
+.stack-img {
+    position: absolute;
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+/* الأولى */
+.img-one {
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+/* الثانية */
+.img-two {
+    top: 25px;
+    left: 35px;
+    z-index: 2;
+}
+
+/* الثالثة */
+.img-three {
+    top: 50px;
+    left: 100px;
+    z-index: 1;
+}
+
+
+
+/* hover*/
+
+.img-one:hover {
+    transform: scale(1.08) translateY(-30px);
+    z-index: 10;
+}
+
+.img-two:hover {
+    transform: scale(1.08) translateY(-30px);
+    z-index: 10;
+}
+
+.img-three:hover {
+    transform: scale(1.08) translateY(-30px);
+    z-index: 10;
+}
+
+
+
+@media (max-width: 575px) {
+
+    .image-stack {
+        width: 100%;
+        height: 400px;
+        margin: auto;
+    }
+
+    .stack-img {
+        width: 220px;
+        height: 300px;
+    }
+
+    .img-one {
+        left: 0;
+    }
+
+    .img-two {
+        left: 30px;
+        top: 25px;
+    }
+
+    .img-three {
+        left: 60px;
+        top: 50px;
+    }
+}
+/* end choose section */
+
+
+
+
+/* start info about section */
+
+
+.info-about{
+  background:linear-gradient(rgba(43, 43, 196, 0.699)),url(../../public/img/info-bg.jpg);
+  padding: 70px 0;
+}
+
+.icon-about{
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 20px;
+  
+   
+}
+
+.icon-about:hover{
+    background-color: rgba(245, 245, 245, 0.409);
+}
+
+.info-about h2{
+    color: white;
+}
+
+.info-about p{
+    color: white;
+}
+
+
+
+
+
+
+/* end info about section */

@@ -10,10 +10,10 @@ import Register from "./Register/Register";
 
 
 import Home from "./Home/Home";
-// import About from "./About/About";
+import About from "./About/About";
 import Doctors from "./Doctors/Doctors";
 import Details from "./Details/Details";
-// import Department from "./Department/Department";
+import Department from "./Department/Department";
 import Services from "./Services/Services";
 import Contact from "./Contact/Contact";
 import PublicProfile from "./PublicProfile/PublicProfile";
@@ -43,10 +43,10 @@ function App() {
 
         {/* صفحات الـ User */}
         <Route path="/Home" element={<Home />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/About" element={<About />} />
         <Route path="/Doctors" element={<Doctors />} />
         <Route path="/Details" element={<Details />} />
-        {/* <Route path="/department" element={<Department />} /> */}
+        <Route path="/Department" element={<Department />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/PublicProfile" element={<PublicProfile />} />
