@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import axios from "axios";
 import "./Register.css";
 
 function Register() {
@@ -48,26 +49,23 @@ function Register() {
             // Send Request to Laravel API
             // ===============================
 
-          console.log("BEFORE FETCH");
+            console.log("BEFORE AXIOS");
 
-const response = await fetch(
-    "http://localhost:8000/api/register",
+            const response = await axios.post(
+                "http://localhost:8000/api/register",
                 {
-                    method: "POST",
-
+                    first_name: formData.first_name,
+                    last_name: formData.last_name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    password: formData.password,
+                    role_id: formData.role_id
+                },
+                {
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        first_name: formData.first_name,
-                        last_name: formData.last_name,
-                        email: formData.email,
-                        phone: formData.phone,
-                        password: formData.password,
-                        role_id: formData.role_id
-                    })
+                    }
                 }
             );
 
@@ -77,49 +75,48 @@ const response = await fetch(
 
             console.log("RESPONSE RECEIVED");
             console.log("STATUS:", response.status);
-
-            const data = await response.json();
-
-            console.log("API Response:", data);
+            console.log("API Response:", response.data);
 
 
             // ===============================
             // Success
             // ===============================
 
-            if (response.ok) {
+            alert("User Registered Successfully");
 
-                alert("User Registered Successfully");
-
-                console.log("REGISTER SUCCESS");
-
-            }
-
-            // ===============================
-            // Error
-            // ===============================
-
-            else {
-
-                console.log("Validation errors:", data.data);
-
-                alert(data.message || "Registration failed");
-
-            }
+            console.log("REGISTER SUCCESS");
 
         }
 
         // ===============================
-        // Fetch / Connection Error
+        // Axios / Connection Error
         // ===============================
 
-        catch (error) {
+  catch (error) {
 
-            console.error("REGISTER ERROR:", error);
+    console.error("REGISTER ERROR:", error);
 
-            alert(error.message);
+    if (error.response) {
 
-        }
+        console.log("STATUS:", error.response.status);
+        console.log("API ERROR:", error.response.data);
+
+        console.log(
+            "VALIDATION ERRORS:",
+            error.response.data.data
+        );
+
+        alert(
+            error.response.data.message ||
+            "Registration failed"
+        );
+
+    } else {
+
+        alert("Cannot connect to Laravel server");
+
+    }
+}
     };
 
 

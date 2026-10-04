@@ -1,0 +1,1024 @@
+
+/* ================================= */
+/* PATIENT MANAGEMENT */
+/* ================================= */
+
+.patient-management {
+    min-height: 100vh;
+    padding: 120px 0 50px;
+    background-color: #f8f9fa;
+}
+
+.patient-management a {
+    text-decoration: none;
+}
+
+
+/* ================================= */
+/* PAGE HEADER */
+/* ================================= */
+
+.patient-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+
+/* ================================= */
+/* BACK LINK */
+/* ================================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 12px;
+
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: rgb(116, 192, 252);
+}
+
+.back-link i {
+    font-size: 13px;
+}
+
+
+/* ================================= */
+/* PAGE TITLE */
+/* ================================= */
+
+.patient-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.patient-title > i {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 10px;
+
+    background-color: #e7f3ff;
+    color: rgb(116, 192, 252);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+}
+
+.patient-title h2 {
+    margin: 0;
+
+    color: #333;
+
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+/* ================================= */
+/* HEADER BUTTONS */
+/* ================================= */
+
+.page-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-patient-btn {
+    border: none;
+    border-radius: 7px;
+
+    padding: 10px 18px;
+
+    background-color: rgb(116, 192, 252);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.add-patient-btn i {
+    margin-right: 7px;
+}
+
+.add-patient-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+
+/* ================================= */
+/* PATIENT / APPOINTMENT FORM SECTION */
+/* ================================= */
+
+.patient-form-section {
+    background-color: white;
+
+    padding: 25px;
+
+    margin-bottom: 30px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================================= */
+/* FORM HEADER */
+/* ================================= */
+
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.form-header h3 {
+    margin: 0;
+
+    color: #333;
+
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.form-close-btn {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #f1f1f1;
+    color: #555;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.form-close-btn:hover {
+    background-color: #e2e2e2;
+    color: #222;
+}
+
+
+/* ================================= */
+/* FORM */
+/* ================================= */
+
+.patient-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    column-gap: 20px;
+}
+
+.patient-form .form-group {
+    margin-bottom: 20px;
+}
+
+.patient-form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #555;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.patient-form input,
+.patient-form select,
+.patient-form textarea {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 7px;
+
+    background-color: white;
+    color: #333;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: none;
+
+    transition: 0.2s;
+}
+
+.patient-form textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+.patient-form input:focus,
+.patient-form select:focus,
+.patient-form textarea:focus {
+    border-color: rgb(116, 192, 252);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(116, 192, 252, 0.15);
+}
+
+.patient-form select {
+    cursor: pointer;
+}
+
+.patient-form input[type="file"] {
+    padding: 8px 12px;
+}
+
+
+/* ================================= */
+/* DISABLED SELECT */
+/* ================================= */
+
+.patient-form select:disabled {
+    background-color: #f1f1f1;
+    color: #999;
+
+    cursor: not-allowed;
+}
+
+
+/* ================================= */
+/* NOTES FULL WIDTH */
+/* ================================= */
+
+.patient-form .form-group:has(textarea) {
+    grid-column: 1 / -1;
+}
+
+
+/* ================================= */
+/* FORM ACTIONS */
+/* ================================= */
+
+.form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 5px;
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.save-btn,
+.cancel-btn {
+    border: none;
+    border-radius: 7px;
+
+    padding: 10px 18px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.save-btn {
+    background-color: rgb(116, 192, 252);
+    color: white;
+}
+
+.save-btn i {
+    margin-right: 7px;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.save-btn:hover,
+.cancel-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+
+/* ================================= */
+/* PATIENTS SECTION */
+/* ================================= */
+
+.patients-section {
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================================= */
+/* PATIENTS HEADER */
+/* ================================= */
+
+.patients-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.patients-header > div:first-child {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.patients-header h3 {
+    margin: 0;
+
+    color: #333;
+
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.patient-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background-color: rgb(116, 192, 252);
+    color: white;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* ================================= */
+/* SEARCH */
+/* ================================= */
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 350px;
+}
+
+.search-wrapper > i {
+    width: 20px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 20px;
+
+    color: #888;
+
+    font-size: 16px;
+}
+
+.search-wrapper input {
+    width: 320px;
+    height: 42px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 7px;
+
+    background-color: white;
+    color: #333;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.search-wrapper input:focus {
+    border-color: rgb(116, 192, 252);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(116, 192, 252, 0.15);
+}
+
+
+/* ================================= */
+/* TABLE RESPONSIVE */
+/* ================================= */
+
+.table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* ================================= */
+/* TABLE */
+/* ================================= */
+
+.patient-table {
+    width: 100%;
+
+    min-width: 1250px;
+
+    border-collapse: collapse;
+}
+
+.patient-table thead th {
+    padding: 13px 12px;
+
+    background-color: rgb(116, 192, 252);
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.patient-table tbody td {
+    padding: 12px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    color: #444;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.patient-table tbody tr {
+    transition: 0.2s;
+}
+
+.patient-table tbody tr:hover {
+    background-color: #f8fbff;
+}
+
+
+/* ================================= */
+/* PROFILE IMAGE */
+/* ================================= */
+
+.patient-profile-image,
+.patient-table img {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 1px solid #ddd;
+}
+
+.patient-default-image {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background-color: #e7f3ff;
+    color: rgb(116, 192, 252);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ddd;
+}
+
+.patient-default-image i {
+    font-size: 17px;
+}
+
+
+/* ================================= */
+/* APPOINTMENT STATUS */
+/* ================================= */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+}
+
+
+/* ================================= */
+/* PENDING */
+/* ================================= */
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+
+/* ================================= */
+/* CONFIRMED */
+/* ================================= */
+
+.status-badge.confirmed {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+
+/* ================================= */
+/* COMPLETED */
+/* ================================= */
+
+.status-badge.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+
+/* ================================= */
+/* CANCELLED */
+/* ================================= */
+
+.status-badge.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+/* ================================= */
+/* NO APPOINTMENT */
+/* ================================= */
+
+.status-badge:not(.pending):not(.confirmed):not(.completed):not(.cancelled) {
+    background-color: #eeeeee;
+    color: #666;
+}
+
+
+/* ================================= */
+/* ACTION BUTTONS */
+/* ================================= */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    white-space: nowrap;
+}
+
+.action-buttons button {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background-color: #e7f3ff;
+    color: #3b82f6;
+}
+
+.delete-btn {
+    background-color: #fde8e8;
+    color: #dc3545;
+}
+
+.action-buttons button:hover {
+    transform: translateY(-1px);
+
+    opacity: 0.9;
+}
+
+
+/* ================================= */
+/* EMPTY STATE */
+/* ================================= */
+
+.no-patients {
+    text-align: center;
+
+    padding: 35px;
+
+    color: #777;
+}
+
+.no-patients i {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: rgb(116, 192, 252);
+
+    font-size: 35px;
+}
+
+.no-patients p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* ================================= */
+/* DARK MODE */
+/* ================================= */
+
+body.dark .patient-management {
+    background-color: #121212;
+}
+
+body.dark .patient-title h2 {
+    color: #f1f1f1;
+}
+
+body.dark .patient-title > i {
+    background-color: #1d2b36;
+}
+
+body.dark .back-link {
+    color: #aaa;
+}
+
+body.dark .back-link:hover {
+    color: rgb(116, 192, 252);
+}
+
+
+/* ================================= */
+/* DARK MODE FORMS */
+/* ================================= */
+
+body.dark .patient-form-section,
+body.dark .patients-section {
+    background-color: #1e1e1e;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .form-header {
+    border-bottom-color: #333;
+}
+
+body.dark .form-header h3 {
+    color: #f1f1f1;
+}
+
+body.dark .patient-form label {
+    color: #ccc;
+}
+
+body.dark .patient-form input,
+body.dark .patient-form select,
+body.dark .patient-form textarea,
+body.dark .search-wrapper input {
+    background-color: #2a2a2a;
+
+    border-color: #444;
+
+    color: #f1f1f1;
+}
+
+body.dark .patient-form input::placeholder,
+body.dark .patient-form textarea::placeholder,
+body.dark .search-wrapper input::placeholder {
+    color: #999;
+}
+
+body.dark .patient-form select:disabled {
+    background-color: #222;
+    color: #777;
+}
+
+body.dark .form-close-btn {
+    background-color: #333;
+    color: #ddd;
+}
+
+body.dark .form-close-btn:hover {
+    background-color: #444;
+}
+
+body.dark .form-actions {
+    border-top-color: #333;
+}
+
+
+/* ================================= */
+/* DARK MODE PATIENTS HEADER */
+/* ================================= */
+
+body.dark .patients-header h3 {
+    color: #f1f1f1;
+}
+
+body.dark .search-wrapper > i {
+    color: #aaa;
+}
+
+
+/* ================================= */
+/* DARK MODE TABLE */
+/* ================================= */
+
+/*
+   Keep table white in dark mode,
+   exactly like the existing project design.
+*/
+
+body.dark .patient-table tbody tr {
+    background-color: #ffffff;
+}
+
+body.dark .patient-table tbody td {
+    color: #000000 !important;
+
+    font-weight: 500;
+
+    border-bottom-color: #333;
+}
+
+body.dark .patient-table tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 992px) {
+
+    .patient-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-header-buttons {
+        width: 100%;
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+    .patients-header {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .search-wrapper input {
+        width: 100%;
+
+        flex: 1;
+    }
+
+}
+
+
+/* ================================= */
+/* TABLET */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    .patient-management {
+        padding: 100px 15px 40px;
+    }
+
+    .patient-title h2 {
+        font-size: 24px;
+    }
+
+    .patient-title > i {
+        width: 44px;
+        height: 44px;
+
+        font-size: 22px;
+    }
+
+    .page-header-buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .page-header-buttons button {
+        width: 100%;
+    }
+
+    .patients-section {
+        padding: 18px;
+    }
+
+    .patient-form-section {
+        padding: 18px;
+    }
+
+    .patient-form {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-form .form-group:has(textarea) {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        grid-column: auto;
+
+        flex-direction: row;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .search-wrapper input {
+        min-width: 0;
+    }
+
+}
+
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media (max-width: 480px) {
+
+    .patient-management {
+        padding: 90px 10px 30px;
+    }
+
+    .patient-page-header {
+        gap: 15px;
+    }
+
+    .patient-title {
+        gap: 8px;
+    }
+
+    .patient-title > i {
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
+    }
+
+    .patient-title h2 {
+        font-size: 21px;
+    }
+
+    .page-header-buttons {
+        flex-direction: column;
+    }
+
+    .page-header-buttons button {
+        width: 100%;
+    }
+
+    .patients-section {
+        padding: 15px;
+    }
+
+    .patients-header h3 {
+        font-size: 18px;
+    }
+
+    .search-wrapper {
+        gap: 7px;
+    }
+
+    .search-wrapper > i {
+        width: 18px;
+        flex-basis: 18px;
+
+        font-size: 15px;
+    }
+
+    .search-wrapper input {
+        height: 40px;
+    }
+
+    .patient-form-section {
+        padding: 15px;
+    }
+
+    .patient-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+
+}

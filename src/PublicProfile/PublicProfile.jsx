@@ -298,7 +298,7 @@ function PublicProfile() {
                 <button
                   type="button"
                   id="editProfile"
-                  className="edit-btn"
+                  className="edit-btn w-25"
                   onClick={handleEdit}
                 >
                   <i className="fa-solid fa-pen"></i>
@@ -309,7 +309,7 @@ function PublicProfile() {
                 <button
                   type="button"
                   id="cancelProfile"
-                  className="delete-btn"
+                  className="delete-btn w-25"
                   onClick={handleCancel}
                 >
                   <i className="fa-solid fa-xmark"></i>

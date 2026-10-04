@@ -1,0 +1,481 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* =========================
+   Dashboard
+========================= */
+
+.admin-dashboard {
+
+    background-color: white;
+    margin-top: 25px;
+    padding: 80px;
+}
+
+
+   
+.dashboard-container {
+
+    padding-left: 30px;
+
+    padding-right: 30px;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   Dashboard Title
+========================= */
+
+.dashboard-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 45px;
+
+}
+
+
+.dashboard-title i {
+
+    margin-right: 10px;
+
+}
+
+
+.dashboard-title h3 {
+
+    color: #192a56;
+
+    font-weight: 700;
+
+
+
+}
+
+
+/* =========================
+   Statistics Cards
+========================= */
+
+.dashboard-cards {
+
+    margin-bottom: 25px;
+
+}
+
+
+.dashboard-card {
+
+    background-color: white;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 10px;
+
+    min-height: 130px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.dashboard-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 6px 18px rgba(116, 192, 252, 0.25);
+
+}
+
+
+.dashboard-card h6 {
+
+    color: #192a56;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+}
+
+
+.dashboard-card h3 {
+
+    color: rgb(116, 192, 252);
+
+    font-weight: 700;
+
+  
+
+}
+
+
+/* =========================
+   Card Icon
+========================= */
+
+.card-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    background-color: rgba(116, 192, 252, 0.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================
+   Management Section
+========================= */
+
+.dashboard-section {
+
+    margin-top: 30px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.section-title i {
+
+    margin-right: 10px;
+
+}
+
+
+.section-title h4 {
+
+    color: #192a56;
+
+    font-weight: 700;
+
+    margin: 0;
+
+}
+
+
+.management-cards {
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================
+   Management Cards
+========================= */
+
+.management-card {
+
+    background-color: white;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 10px;
+
+    min-height: 230px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.management-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 6px 18px rgba(116, 192, 252, 0.25);
+
+}
+
+
+.management-card  i {
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.management-card h5 {
+
+    color: #192a56;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.management-card p {
+
+    color: #666;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================
+   Management Button
+========================= */
+
+.management-btn {
+
+    background-color: rgb(116, 192, 252);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 6px;
+
+    padding: 9px 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.management-btn:hover {
+
+    background-color: #192a56;
+
+    color: white;
+
+}
+
+
+/* =========================
+   Dark Mode
+========================= */
+
+body.dark .admin-dashboard {
+
+    background-color: black;
+
+}
+
+
+body.dark .dashboard-title h3 {
+
+    color: white;
+
+}
+
+
+body.dark .dashboard-card {
+
+    background-color: #17191c;
+
+    border-color: rgba(116, 192, 252, 0.15);
+
+    box-shadow: 0 3px 15px rgba(116, 192, 252, 0.08);
+
+}
+
+
+body.dark .dashboard-card h6 {
+
+    color: white;
+
+}
+
+
+body.dark .dashboard-card h3 {
+
+    color: rgb(116, 192, 252);
+
+}
+
+
+body.dark .dashboard-section h4 {
+
+    color: white;
+
+}
+
+
+body.dark .management-card {
+
+    background-color: #17191c;
+
+    border-color: rgba(116, 192, 252, 0.15);
+
+    box-shadow: 0 3px 15px rgba(116, 192, 252, 0.08);
+
+}
+
+
+body.dark .management-card h5 {
+
+    color: white;
+
+}
+
+
+body.dark .management-card p {
+
+    color: #ddd;
+
+}
+
+
+body.dark .management-btn {
+
+    background-color: rgb(116, 192, 252);
+
+    color: #17191c;
+
+}
+
+
+body.dark .management-btn:hover {
+
+    background-color: white;
+
+    color: #192a56;
+
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 991px) {
+
+    .dashboard-card {
+
+        min-height: 120px;
+
+    }
+
+
+    .management-card {
+
+        min-height: 220px;
+
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .admin-dashboard {
+
+        padding-top: 90px;
+
+    }
+
+
+    .dashboard-container {
+
+        padding-left: 15px;
+
+        padding-right: 15px;
+
+    }
+
+
+    .dashboard-title h3 {
+
+        font-size: 22px;
+
+    }
+
+
+    .dashboard-card {
+
+        min-height: 110px;
+
+    }
+
+
+    .management-card {
+
+        min-height: 210px;
+
+    }
+
+
+    .section-title h4 {
+
+        font-size: 20px;
+
+    }
+
+}

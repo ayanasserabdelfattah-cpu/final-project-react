@@ -1,0 +1,25 @@
+/* start nav admin section */
+
+.nav-link-admin{
+    background-color:  rgb(116, 192, 252);
+    color: white !important;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-link-admin:hover{
+    background-color:  #192a56;
+    color: white !important;
+   
+}
+
+body.dark .nav-link-admin:hover{
+      background-color:  white;
+    color: #192a56 !important;
+}
+
+
+
+/* end nav admin section */

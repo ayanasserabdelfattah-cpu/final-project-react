@@ -52,6 +52,9 @@
 }
 
 
+.appointment-contact button{
+      text-transform: capitalize;
+}
 /* dark mood */
 
 body.dark .call-contact{

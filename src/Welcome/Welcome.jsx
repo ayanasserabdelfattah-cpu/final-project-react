@@ -185,14 +185,14 @@ function Welcome() {
 
                 <Link
                   to="/Register"
-                  className="nav-link btn btn-primary p-2 mb-3"
+                  className="nav-link-welcome btn btn-primary p-2 mb-3"
                 >
                   Register
                 </Link>
 
                 <Link
                   to="/Login"
-                  className="nav-link btn btn-primary p-2 mb-3"
+                  className="nav-link-welcome btn btn-primary p-2 mb-3"
                 >
                   Login
                 </Link>

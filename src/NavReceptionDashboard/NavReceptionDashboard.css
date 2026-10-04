@@ -1,0 +1,105 @@
+
+/* ================================= */
+/* START NAV RECEPTION SECTION */
+/* ================================= */
+
+.navbar-reception {
+    width: 100%;
+}
+
+
+/* ================================= */
+/* NAV RECEPTION LINK */
+/* ================================= */
+
+.nav-link-reception {
+    background-color: rgb(116, 192, 252);
+
+    color: white !important;
+
+    border-radius: 5px;
+
+    padding: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.nav-link-reception:hover {
+    background-color: #192a56;
+
+    color: white !important;
+}
+
+body.dark .nav-link-reception:hover {
+    background-color: white;
+
+    color: #192a56 !important;
+}
+
+
+/* ================================= */
+/* DARK MODE NAVBAR */
+/* ================================= */
+
+body.dark .navbar-reception {
+    background-color: #1e1e1e !important;
+}
+
+body.dark .navbar-reception .navbar-brand {
+    color: white;
+}
+
+
+/* ================================= */
+/* HAMBURGER */
+/* ================================= */
+
+.navbar-reception .navbar-toggler {
+    border: none;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+.navbar-reception .navbar-toggler:focus {
+    outline: none;
+
+    box-shadow: none;
+}
+
+
+/* ================================= */
+/* NAVBAR COLLAPSE */
+/* ================================= */
+
+.navbar-reception .navbar-collapse {
+    transition: 0.3s;
+}
+
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 991px) {
+
+    .navbar-reception {
+        padding-left: 20px !important;
+
+        padding-right: 20px !important;
+    }
+
+    .navbar-reception .navbar-brand img {
+        width: 120px;
+    }
+
+}
+
+
+/* ================================= */
+/* END NAV RECEPTION SECTION */
+/* ================================= */
+

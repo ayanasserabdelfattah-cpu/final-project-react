@@ -1,0 +1,730 @@
+
+/* ================================= */
+/* ADMIN MANAGEMENT PAGE */
+/* ================================= */
+
+.AdminManagement {
+    min-height: 100vh;
+
+    padding: 120px;
+
+    background-color: #f8f9fa;
+}
+
+.admin-page-header a {
+    text-transform: capitalize;
+
+    padding: 10px;
+
+    border-radius: 5px;
+}
+
+/* ================================= */
+/* PAGE HEADER */
+/* ================================= */
+
+.admin-page-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.admin-page-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.admin-icon {
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background-color: rgba(116, 192, 252, 0.12);
+
+    color: rgb(116, 192, 252);
+
+    font-size: 22px;
+}
+
+.admin-page-title h2 {
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.admin-page-title p {
+    margin: 4px 0 0;
+
+    font-size: 14px;
+
+    color: #888;
+}
+
+/* ================================= */
+/* CREATE BUTTON */
+/* ================================= */
+
+.create-admin-btn {
+    min-width: 235px;
+
+    height: 50px;
+
+    padding: 0 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: rgb(116, 192, 252);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.create-admin-btn:hover {
+    background-color: #4da9ec;
+
+    transform: translateY(-1px);
+}
+
+/* ================================= */
+/* FORM SECTION */
+/* ================================= */
+
+.admin-form-section {
+    width: 100%;
+
+    margin-bottom: 35px;
+
+    padding: 28px 30px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e4e4e4;
+
+    border-radius: 11px;
+}
+
+/* ================================= */
+/* FORM HEADER */
+/* ================================= */
+
+.admin-form-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.admin-form-header h3 {
+    margin: 0;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.admin-form-header p {
+    margin: 5px 0 0;
+
+    font-size: 14px;
+
+    color: #888;
+}
+
+.form-close-btn {
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: #f1f1f1;
+
+    color: #666;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.form-close-btn:hover {
+    background-color: #e4e4e4;
+
+    color: #333;
+}
+
+/* ================================= */
+/* FORM */
+/* ================================= */
+
+.admin-form-section label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #444;
+}
+
+.admin-form-section .form-group {
+    margin-bottom: 18px;
+}
+
+.admin-form-section .form-control {
+    width: 100%;
+
+    height: 44px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 7px;
+
+    background-color: #fff;
+
+    color: #333;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.admin-form-section .form-control:focus {
+    border-color: rgb(116, 192, 252);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(116, 192, 252, 0.15);
+
+    outline: none;
+}
+
+.admin-form-section .form-control:disabled {
+    background-color: #f1f3f5;
+
+    color: #777;
+
+    cursor: not-allowed;
+}
+
+/* ================================= */
+/* FORM BUTTONS */
+/* ================================= */
+
+.admin-form-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.save-admin-btn,
+.cancel-admin-btn {
+    min-width: 145px;
+
+    height: 43px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.save-admin-btn {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background-color: rgb(116, 192, 252);
+
+    color: white;
+}
+
+.save-admin-btn:hover {
+    background-color: #4da9ec;
+}
+
+.cancel-admin-btn {
+    background-color: #ececec;
+
+    color: #444;
+}
+
+.cancel-admin-btn:hover {
+    background-color: #dcdcdc;
+}
+
+/* ================================= */
+/* ADMINS SECTION */
+/* ================================= */
+
+.admins-section {
+    width: 100%;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e4e4e4;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+}
+
+.admins-section-header {
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.admins-section-header h3 {
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.admins-section-header p {
+    margin: 4px 0 0;
+
+    font-size: 13px;
+
+    color: #888;
+}
+
+/* ================================= */
+/* TABLE */
+/* ================================= */
+
+.admin-table {
+    width: 100%;
+
+    margin: 0;
+
+    background-color: #ffffff;
+
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    display: table-header-group !important;
+
+    background-color: rgb(116, 192, 252) !important;
+}
+
+.admin-table thead tr {
+    display: table-row !important;
+}
+
+.admin-table thead th {
+    display: table-cell !important;
+
+    padding: 16px 14px !important;
+
+    background-color: rgb(116, 192, 252) !important;
+
+    color: #ffffff !important;
+
+    font-size: 14px !important;
+
+    font-weight: 600 !important;
+
+    text-align: left;
+
+    border: none !important;
+
+    white-space: nowrap;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+}
+
+.admin-table tbody td {
+    padding: 15px 14px;
+
+    vertical-align: middle;
+
+    border-top: 1px solid #eeeeee;
+
+    color: #444;
+
+    font-size: 13px;
+}
+
+.admin-table tbody tr {
+    transition: 0.2s;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fbfe;
+}
+
+/* ================================= */
+/* NAME */
+/* ================================= */
+
+.admin-name {
+    font-weight: 500;
+
+    color: #333;
+}
+
+/* ================================= */
+/* ROLE */
+/* ================================= */
+
+.role-badge {
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    background-color: rgba(116, 192, 252, 0.12);
+
+    color: #4da9ec;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+/* ================================= */
+/* STATUS */
+/* ================================= */
+
+.status-badge {
+    display: inline-block;
+
+    min-width: 68px;
+
+    padding: 5px 10px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background-color: #e8f7ed;
+
+    color: #2d9a50;
+}
+
+.status-badge.inactive {
+    background-color: #fbeaea;
+
+    color: #d9534f;
+}
+
+/* ================================= */
+/* ACTIONS */
+/* ================================= */
+
+.action-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.85;
+}
+
+/* ================================= */
+/* NO ADMINS */
+/* ================================= */
+
+.no-admins {
+    height: 100px;
+
+    text-align: center;
+
+    vertical-align: middle !important;
+
+    color: #888 !important;
+}
+
+/* ================================= */
+/* DARK MODE */
+/* ================================= */
+
+body.dark .AdminManagement {
+    background-color: #121212;
+}
+
+body.dark .admin-page-header {
+    border-color: #333;
+}
+
+body.dark .admin-page-title h2 {
+    color: #f1f1f1;
+}
+
+body.dark .admin-page-title p {
+    color: #999;
+}
+
+body.dark .admin-icon {
+    background-color: rgba(116, 192, 252, 0.15);
+
+    color: rgb(116, 192, 252);
+}
+
+body.dark .admin-form-section,
+body.dark .admins-section {
+    background-color: #1e1e1e;
+
+    border-color: #333;
+}
+
+body.dark .admin-form-header,
+body.dark .admins-section-header {
+    border-color: #333;
+}
+
+body.dark .admin-form-header h3,
+body.dark .admins-section-header h3 {
+    color: #f1f1f1;
+}
+
+body.dark .admin-form-header p,
+body.dark .admins-section-header p {
+    color: #999;
+}
+
+body.dark .admin-form-section label {
+    color: #ddd;
+}
+
+body.dark .admin-form-section .form-control {
+    background-color: #292929;
+
+    border-color: #444;
+
+    color: white;
+}
+
+body.dark .admin-form-section .form-control::placeholder {
+    color: #999;
+}
+
+body.dark .admin-form-section .form-control:disabled {
+    background-color: #333;
+
+    color: #aaa;
+}
+
+body.dark .form-close-btn {
+    background-color: #333;
+
+    color: #ccc;
+}
+
+body.dark .form-close-btn:hover {
+    background-color: #444;
+
+    color: white;
+}
+
+body.dark .cancel-admin-btn {
+    background-color: #333;
+
+    color: #ddd;
+}
+
+/* ================================= */
+/* TABLE DARK MODE */
+/* ================================= */
+
+body.dark .admin-table {
+    background-color: #ffffff;
+}
+
+body.dark .admin-table tbody {
+    background-color: #ffffff;
+}
+
+body.dark .admin-table tbody tr {
+    background-color: #ffffff;
+}
+
+body.dark .admin-table tbody td {
+    border-color: #333;
+
+    color: #000000 !important;
+
+    font-weight: 500;
+}
+
+body.dark .admin-table tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+body.dark .admin-name {
+    color: #000000 !important;
+}
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    .AdminManagement {
+        padding: 80px 20px 40px;
+    }
+
+    .admin-page-header {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 18px;
+    }
+
+    .create-admin-btn {
+        width: 100%;
+    }
+
+    .admin-page-title h2 {
+        font-size: 24px;
+    }
+
+    .admin-form-section {
+        padding: 22px 18px;
+    }
+
+    .admin-form-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .save-admin-btn,
+    .cancel-admin-btn {
+        width: 100%;
+    }
+
+    .admin-table {
+        min-width: 850px;
+    }
+}
+

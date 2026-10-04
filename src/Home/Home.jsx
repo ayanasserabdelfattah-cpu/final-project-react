@@ -788,9 +788,9 @@ function Home() {
 
 
                  
-    <textarea name="message" placeholder="comment.." rows="1" cols="18" class="ml-2"></textarea>
+    <textarea name="message" placeholder="comment.." rows="1" cols="18" className="ml-2"></textarea>
 
-    <input type="submit" class="btn btn-primary  rounded-3"  value="Send" ></input>
+    <input type="submit" className="btn btn-primary  rounded-3"  value="Send" ></input>
 
                     </form>
 

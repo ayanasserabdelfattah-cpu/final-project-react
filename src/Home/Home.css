@@ -564,7 +564,7 @@ padding: 70px 0;
 
 .review h5{
   color:rgb(153, 37, 37);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 
@@ -576,7 +576,7 @@ padding: 70px 0;
 
 .review hr{
  
- height: 5px;
+ height:4 px;
  background-color: #090f13;
  width: 40%;
 }
@@ -588,5 +588,6 @@ padding: 70px 0;
 .review_home input{
   text-transform: capitalize;
   width: 100px;
+ 
 }
  /* end review section  */
