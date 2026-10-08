@@ -659,3 +659,472 @@ body.dark .patient-table tbody tr:hover {
         min-width: 850px;
     }
 }
+
+
+/* ================================= */
+/* RESPONSIVE - LARGE TABLET / MD */
+/* ================================= */
+
+@media (max-width: 992px) {
+
+    .patient-management {
+        padding: 100px 20px 50px;
+        overflow-x: hidden;
+    }
+
+    /* PAGE HEADER */
+
+    .patient-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .patient-page-title {
+        width: 100%;
+    }
+
+    /* HEADER ACTIONS */
+
+    .patient-header-actions {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .create-patient-btn {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .patient-header-actions .btn {
+        margin-left: 0 !important;
+        min-width: 130px;
+    }
+
+    /* FORM */
+
+    .patient-form-section {
+        padding: 25px 22px;
+    }
+
+    /* TABLE */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .patient-table {
+        min-width: 850px;
+    }
+}
+
+
+/* ================================= */
+/* RESPONSIVE - TABLET / SM */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    .patient-management {
+        min-height: 100vh;
+        padding: 85px 15px 40px;
+        overflow-x: hidden;
+    }
+
+
+    /* PAGE HEADER */
+
+    .patient-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        margin-bottom: 25px;
+        padding-bottom: 18px;
+    }
+
+    .patient-page-title {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .patient-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 20px;
+    }
+
+    .patient-page-title h2 {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .patient-page-title p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+    /* HEADER BUTTONS */
+
+    .patient-header-actions {
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .create-patient-btn {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        padding: 0 15px;
+        font-size: 14px;
+    }
+
+    .patient-header-actions .btn {
+        width: auto;
+        min-width: 120px;
+        height: 46px;
+        margin-left: 0 !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        white-space: nowrap;
+    }
+
+
+    /* FORM */
+
+    .patient-form-section {
+        width: 100%;
+        padding: 22px 18px;
+        margin-bottom: 25px;
+    }
+
+    .patient-form-header {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .patient-form-header h3 {
+        font-size: 20px;
+    }
+
+    .patient-form-header p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .patient-form-section .form-group {
+        margin-bottom: 15px;
+    }
+
+    .patient-form-section .form-control {
+        height: 43px;
+        font-size: 14px;
+    }
+
+
+    /* FORM BUTTONS */
+
+    .patient-form-buttons {
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .save-patient-btn,
+    .cancel-patient-btn {
+        flex: 1;
+        min-width: 0;
+        height: 43px;
+    }
+
+
+    /* PATIENTS SECTION */
+
+    .patients-section {
+        width: 100%;
+        border-radius: 9px;
+    }
+
+    .patients-section-header {
+        padding: 18px;
+    }
+
+    .patients-section-header h3 {
+        font-size: 19px;
+    }
+
+    .patients-section-header p {
+        font-size: 12px;
+    }
+
+
+    /* TABLE */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .patient-table {
+        min-width: 850px;
+        width: 850px;
+    }
+
+    .patient-table thead th {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+
+    .patient-table tbody td {
+        padding: 13px 12px;
+        font-size: 12px;
+    }
+}
+
+
+/* ================================= */
+/* RESPONSIVE - MOBILE / XS */
+/* ================================= */
+
+@media (max-width: 576px) {
+
+    .patient-management {
+        padding: 80px 10px 30px;
+        overflow-x: hidden;
+    }
+
+
+    /* PAGE TITLE */
+
+    .patient-page-title {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .patient-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 18px;
+    }
+
+    .patient-page-title h2 {
+        font-size: 20px;
+    }
+
+    .patient-page-title p {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+
+    /* HEADER ACTIONS */
+
+    .patient-header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .create-patient-btn {
+        width: 100%;
+        min-width: 100%;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .patient-header-actions .btn {
+        width: 100%;
+        min-width: 100%;
+        height: 44px;
+        margin-left: 0 !important;
+        font-size: 13px;
+    }
+
+
+    /* FORM */
+
+    .patient-form-section {
+        padding: 18px 14px;
+        border-radius: 8px;
+    }
+
+    .patient-form-header {
+        align-items: center;
+    }
+
+    .patient-form-header h3 {
+        font-size: 18px;
+    }
+
+    .patient-form-header p {
+        font-size: 12px;
+    }
+
+    .form-close-btn {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+    }
+
+
+    /* FORM COLUMNS */
+
+    .patient-form-section .row {
+        margin-left: -7px;
+        margin-right: -7px;
+    }
+
+    .patient-form-section .col-md-6,
+    .patient-form-section .col-md-12 {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+
+    /* FORM INPUTS */
+
+    .patient-form-section label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .patient-form-section .form-control {
+        height: 42px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+
+    /* FORM BUTTONS */
+
+    .patient-form-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .save-patient-btn,
+    .cancel-patient-btn {
+        width: 100%;
+        min-width: 100%;
+        height: 42px;
+    }
+
+
+    /* PATIENTS SECTION */
+
+    .patients-section-header {
+        padding: 16px 14px;
+    }
+
+    .patients-section-header h3 {
+        font-size: 18px;
+    }
+
+    .patients-section-header p {
+        font-size: 12px;
+    }
+
+
+    /* TABLE */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-radius: 0;
+    }
+
+    .patient-table {
+        min-width: 850px;
+        width: 850px;
+    }
+
+    .patient-table thead th {
+        padding: 12px 10px;
+        font-size: 12px;
+    }
+
+    .patient-table tbody td {
+        padding: 11px 10px;
+        font-size: 12px;
+    }
+
+
+    /* IMAGE */
+
+    .patient-table tbody td img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+
+    /* ACTION BUTTONS */
+
+    .action-buttons {
+        gap: 5px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 31px;
+        height: 31px;
+        font-size: 12px;
+    }
+}
+
+
+/* ================================= */
+/* VERY SMALL MOBILE */
+/* ================================= */
+
+@media (max-width: 400px) {
+
+    .patient-management {
+        padding: 75px 8px 25px;
+    }
+
+    .patient-page-title h2 {
+        font-size: 18px;
+    }
+
+    .patient-page-title p {
+        font-size: 11px;
+    }
+
+    .patient-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 16px;
+    }
+
+    .patient-form-section {
+        padding: 15px 11px;
+    }
+
+    .patient-form-header h3 {
+        font-size: 17px;
+    }
+
+    .patient-table {
+        min-width: 800px;
+        width: 800px;
+    }
+}

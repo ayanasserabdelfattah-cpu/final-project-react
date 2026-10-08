@@ -99,7 +99,7 @@ function Navbar() {
         >
 
           <img
-            src="img/WhatsApp Image 2026-08-17 at 3.01.12 PM.png"
+            src="/img/WhatsApp Image 2026-08-17 at 3.01.12 PM.png"
             className="img-fluid"
             width="140px"
           />

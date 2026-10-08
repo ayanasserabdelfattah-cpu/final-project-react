@@ -1,182 +1,443 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./Doctors.css";
 
-
-
 function Doctors() {
+    const [doctors, setDoctors] = useState([]);
+    const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+    const API_URL = "http://127.0.0.1:8000";
 
-  const searchInput = document.getElementById("search");
+    // =========================================
+    // IMAGE URL
+    // =========================================
 
-  const itemList = document
-    .getElementById("itemList")
-    .getElementsByClassName("col-md-4");
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return "";
 
-  const handleSearch = function () {
+        if (
+            imagePath.startsWith("http://") ||
+            imagePath.startsWith("https://")
+        ) {
+            return imagePath;
+        }
 
-    const filter = searchInput.value.toLowerCase();
+        if (imagePath.startsWith("/storage/")) {
+            return `${API_URL}${imagePath}`;
+        }
 
-    for (let i = 0; i < itemList.length; i++) {
+        if (imagePath.startsWith("storage/")) {
+            return `${API_URL}/${imagePath}`;
+        }
 
-      const item = itemList[i].textContent.toLowerCase();
+        return `${API_URL}/storage/${imagePath}`;
+    };
 
-      itemList[i].style.display =
-        item.includes(filter) ? "" : "none";
-    }
-  };
+    // =========================================
+    // GET DOCTORS
+    // =========================================
 
-  searchInput.addEventListener("keyup", handleSearch);
+    useEffect(() => {
+        const getDoctors = async () => {
+            try {
+                setLoading(true);
 
-  return () => {
-    searchInput.removeEventListener("keyup", handleSearch);
-  };
+                const token = localStorage.getItem("token");
 
-}, []);
+                const config = token
+                    ? {
+                          headers: {
+                              Authorization: `Bearer ${token}`,
+                              Accept: "application/json",
+                          },
+                      }
+                    : {
+                          headers: {
+                              Accept: "application/json",
+                          },
+                      };
 
-  return (
-    <div>
+                // =========================================
+                // 1. DOCTORS API
+                // ده الأساس لأنه شغال مع Patient
+                // =========================================
 
-        <Navbar/>
+                const doctorsResponse = await axios.get(
+                    `${API_URL}/api/doctors`,
+                    config
+                );
 
-      {/* Start Search Doctors Section */}
+                console.log(
+                    "DOCTORS API:",
+                    doctorsResponse.data
+                );
 
-      <section className="search-doctors">
+                const doctorRecords =
+                    doctorsResponse.data.data ||
+                    doctorsResponse.data ||
+                    [];
 
-        <div className="container">
+                console.log(
+                    "DOCTOR RECORDS:",
+                    doctorRecords
+                );
 
-          {/* Search */}
+                // =========================================
+                // 2. USERS API
+                // نحاول نجيبها، لكن لو Patient مش مسموح له
+                // مش هنوقف الصفحة
+                // =========================================
 
-          <div className="row">
-            <div className="col-md-12">
+                let users = [];
 
-              <div className="d-flex align-items-center justify-content-center">
+                try {
+                    const usersResponse = await axios.get(
+                        `${API_URL}/api/users`,
+                        config
+                    );
 
-                <i className="fas fa-search mr-2"></i>
+                    console.log(
+                        "USERS API:",
+                        usersResponse.data
+                    );
 
-                <input
-                  type="text"
-                  id="search"
-                  placeholder="Search for a doctor..."
-                />
+                    users =
+                        usersResponse.data.data ||
+                        usersResponse.data ||
+                        [];
 
-              </div>
+                    console.log(
+                        "USERS:",
+                        users
+                    );
+                } catch (userError) {
+                    console.log(
+                        "USERS API NOT AVAILABLE FOR THIS USER"
+                    );
 
-            </div>
-          </div>
+                    console.log(
+                        "USERS STATUS:",
+                        userError.response?.status
+                    );
 
+                    console.log(
+                        "USERS RESPONSE:",
+                        userError.response?.data
+                    );
 
-          {/* Doctors */}
+                    // مهم جدًا:
+                    // مش هنوقف الصفحة لو /api/users
+                    // مش متاح للـ Patient
+                    users = [];
+                }
 
-          <div className="row mt-5" id="itemList">
+                // =========================================
+                // 3. FORMAT DOCTORS
+                // =========================================
 
-            {/* Doctor 1 */}
+                const formattedDoctors = doctorRecords.map(
+                    (doctor) => {
 
-            <div className="col-md-4">
+                        // -----------------------------------------
+                        // نحاول نجيب الـ User المرتبط بالدكتور
+                        // -----------------------------------------
 
-              <div className="text-center doctor mb-5">
+                        const user = users.find(
+                            (item) =>
+                                Number(item.id) ===
+                                Number(doctor.user_id)
+                        );
 
-                <img
-                  src="/img/doctor-1.jpg"
-                  className="img-fluid mb-4 doctor-image"
-                  alt="Dr. Zyad Ali"
-                />
+                        // -----------------------------------------
+                        // الاسم:
+                        //
+                        // الأول من users لو موجود
+                        // وبعد كده نجرب أي اسم موجود داخل doctor
+                        // -----------------------------------------
 
-                <h3 className="mb-4 doctor-name">
-                  Dr. Zyad Ali
-                </h3>
+                        const firstName =
+                            user?.first_name ||
+                            doctor.first_name ||
+                            doctor.user?.first_name ||
+                            "";
 
-                <h6 className="mb-4 doctor-specialization">
-                  Surgeon
-                </h6>
+                        const lastName =
+                            user?.last_name ||
+                            doctor.last_name ||
+                            doctor.user?.last_name ||
+                            "";
 
-                <Link
-                  to="/details"
-                  className="btn btn-primary rounded-pill"
-                >
-                  Details
-                </Link>
+                        // -----------------------------------------
+                        // الصورة
+                        // -----------------------------------------
 
-              </div>
+                        const profileImage =
+                            user?.profile_image ||
+                            doctor.profile_image ||
+                            doctor.user?.profile_image ||
+                            "";
 
-            </div>
+                        // -----------------------------------------
+                        // IMPORTANT
+                        //
+                        // id هنا Doctor ID
+                        // doctor_id برضه Doctor ID
+                        // user_id هو User ID
+                        // -----------------------------------------
 
+                        return {
+                            id: doctor.id,
 
-            {/* Doctor 2 */}
+                            doctor_id: doctor.id,
 
-            <div className="col-md-4">
+                            user_id: doctor.user_id,
 
-              <div className="text-center doctor mb-5">
+                            first_name: firstName,
 
-                <img
-                  src="/img/contact.jpg"
-                  className="img-fluid mb-4 doctor-image"
-                  alt="Dr. Mazen"
-                />
+                            last_name: lastName,
 
-                <h3 className="mb-4 doctor-name">
-                  Dr. Mazen
-                </h3>
+                            profile_image: profileImage,
 
-                <h6 className="mb-4 doctor-specialization">
-                  Ophthalmology
-                </h6>
+                            specialization:
+                                doctor.specialization || "",
 
-                <Link
-                  to="/Details"
-                  className="btn btn-primary rounded-pill"
-                >
-                  Details
-                </Link>
+                            qualification:
+                                doctor.qualification || "",
 
-              </div>
+                            experience_years:
+                                doctor.experience_years || "",
 
-            </div>
+                            consultation_fee:
+                                doctor.consultation_fee || "",
 
+                            bio:
+                                doctor.bio || "",
 
-            {/* Doctor 3 */}
+                            license_number:
+                                doctor.license_number || "",
 
-            <div className="col-md-4">
+                            doctor_status:
+                                doctor.status,
+                        };
+                    }
+                );
 
-              <div className="text-center doctor mb-5">
+                console.log(
+                    "FORMATTED DOCTORS:",
+                    formattedDoctors
+                );
 
-                <img
-                  src="/img/doctor-2.jpg"
-                  className="img-fluid mb-4 doctor-image"
-                  alt="Dr. Ezz Ali"
-                />
+                setDoctors(formattedDoctors);
 
-                <h3 className="mb-4 doctor-name">
-                  Dr. Ezz Ali
-                </h3>
+            } catch (error) {
+                console.error(
+                    "GET PUBLIC DOCTORS ERROR:",
+                    error
+                );
 
-                <h6 className="mb-4 doctor-specialization">
-                  Dentist
-                </h6>
+                console.log(
+                    "STATUS:",
+                    error.response?.status
+                );
 
-                <Link
-                  to="/Details"
-                  className="btn btn-primary rounded-pill"
-                >
-                  Details
-                </Link>
+                console.log(
+                    "BACKEND RESPONSE:",
+                    error.response?.data
+                );
 
-              </div>
+                setDoctors([]);
 
-            </div>
+            } finally {
+                setLoading(false);
+            }
+        };
 
-          </div>
+        getDoctors();
+    }, []);
+
+    // =========================================
+    // SEARCH
+    // =========================================
+
+    const filteredDoctors = doctors.filter(
+        (doctor) => {
+
+            const fullName =
+                `${doctor.first_name || ""} ${
+                    doctor.last_name || ""
+                }`
+                    .toLowerCase()
+                    .trim();
+
+            const specialization =
+                doctor.specialization
+                    ?.toLowerCase() || "";
+
+            const searchValue =
+                search
+                    .toLowerCase()
+                    .trim();
+
+            return (
+                fullName.includes(searchValue) ||
+                specialization.includes(searchValue)
+            );
+        }
+    );
+
+    // =========================================
+    // UI
+    // =========================================
+
+    return (
+        <div>
+
+            <Navbar />
+
+            <section className="search-doctors">
+
+                <div className="container">
+
+                    <div className="row">
+
+                        <div className="col-md-12">
+
+                            <div className="d-flex align-items-center justify-content-center">
+
+                                <i className="fas fa-search mr-2"></i>
+
+                                <input
+                                    type="text"
+                                    id="search"
+                                    placeholder="Search for a doctor..."
+                                    value={search}
+                                    onChange={(e) =>
+                                        setSearch(e.target.value)
+                                    }
+                                />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        className="row mt-5"
+                        id="itemList"
+                    >
+
+                        {loading ? (
+
+                            <div className="col-md-12 text-center">
+
+                                <p>
+                                    Loading doctors...
+                                </p>
+
+                            </div>
+
+                        ) : filteredDoctors.length > 0 ? (
+
+                            filteredDoctors.map(
+                                (doctor) => (
+
+                                    <div
+                                        className="col-md-4 mb-4 d-flex"
+                                        key={doctor.doctor_id}
+                                    >
+
+                                        <div className="doctor text-center">
+
+                                            {/* IMAGE */}
+
+                                            {doctor.profile_image ? (
+
+                                                <img
+                                                    src={getImageUrl(
+                                                        doctor.profile_image
+                                                    )}
+                                                    alt={`Dr. ${
+                                                        doctor.first_name
+                                                    } ${
+                                                        doctor.last_name
+                                                    }`}
+                                                />
+
+                                            ) : (
+
+                                                <div className="no-image">
+                                                    No Image
+                                                </div>
+
+                                            )}
+
+                                            {/* NAME */}
+
+                                            <h3>
+
+                                                Dr.{" "}
+
+                                                {
+                                                    doctor.first_name
+                                                }{" "}
+
+                                                {
+                                                    doctor.last_name
+                                                }
+
+                                            </h3>
+
+                                            {/* SPECIALIZATION */}
+
+                                            <h6>
+
+                                                {
+                                                    doctor.specialization ||
+                                                    "Doctor"
+                                                }
+
+                                            </h6>
+
+                                            {/* DETAILS */}
+
+                                            <Link
+                                                to={`/Details/${doctor.user_id}`}
+                                                className="btn btn-primary rounded-pill"
+                                            >
+                                                Details
+                                            </Link>
+
+                                        </div>
+
+                                    </div>
+
+                                )
+                            )
+
+                        ) : (
+
+                            <div className="col-md-12 text-center">
+
+                                <p>
+                                    No doctors found.
+                                </p>
+
+                            </div>
+
+                        )}
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
-
-      </section>
-
-      {/* End Search Doctors Section */}
-
-    </div>
-  );
+    );
 }
 
 export default Doctors;

@@ -1,51 +1,147 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.details-home{
+.details-home {
     background-color: rgba(245, 245, 245, 0.315);
     padding: 130px 0;
 }
 
-.details-home h5{
+.details-home h5 {
+    color: #192a56;
+    font-weight: 600;
+}
+
+.details-home img {
+    width: 340px;
+    height: 450px;
+    object-fit: cover;
+}
+
+.details-home a {
+    text-transform: capitalize;
+    width: 50%;
+}
+
+.details-home h4 {
     color: #192a56;
     font-weight: 600;
 }
 
 
-.details-home img{
-    width: 340px;
-   
-}
-.details-home a{
-    text-transform: capitalize;
-    width: 50%;
-   
+/* =========================
+   Doctor Details
+========================= */
+
+.doctor-info {
+    width: 100%;
 }
 
-
-.details-home h4{
-     color: #192a56;
-     font-weight: 600;
+.doctor-info > div {
+    width: 100%;
 }
 
-/* dark mood */
+.doctor-id,
+.doctor-name,
+.doctor-specialization,
+.doctor-experience,
+.doctor-qualification,
+.doctor-fees {
+    color: #333;
+    font-weight: 500;
+}
 
-body.dark .details-home{
+
+/* =========================
+   Doctor Bio
+========================= */
+
+.doctor-bio {
+    display: block;
+    margin-top: 8px;
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+    max-width: 500px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+/* =========================
+   Dark Mode
+========================= */
+
+body.dark .details-home {
     background-color: black;
 }
 
 body.dark .details-home h5 {
-   color: white;
+    color: white;
 }
 
 body.dark .details-home h4 {
-   color: white;
+    color: white;
 }
 
-body.dark .details-home a:nth-of-type(2){
-  background-color: white;
-  color: black;
+body.dark .doctor-id,
+body.dark .doctor-name,
+body.dark .doctor-specialization,
+body.dark .doctor-experience,
+body.dark .doctor-qualification,
+body.dark .doctor-fees,
+body.dark .doctor-bio {
+    color: white;
+}
+
+body.dark .details-home a:nth-of-type(2) {
+    background-color: white;
+    color: black;
+}
+
+
+/* =========================
+   No Image
+========================= */
+
+.details-no-image {
+    width: 340px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee;
+    color: #777;
+    border-radius: 30px;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+
+    .details-home {
+        padding: 100px 20px;
+    }
+
+    .details-home img,
+    .details-no-image {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+    }
+
+    .doctor-info {
+        margin-top: 30px !important;
+    }
+
+    .doctor-bio {
+        max-width: 100%;
+    }
+
 }

@@ -1,25 +1,79 @@
-/* start nav admin section */
+/* ================================= */
+/* VISIT SITE - ADMIN NAVBAR */
+/* ================================= */
 
-.nav-link-admin{
-    background-color:  rgb(116, 192, 252);
+.nav-link-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+    height: 42px;
+
+    padding: 0 18px;
+
+    background-color: rgb(116, 192, 252);
     color: white !important;
-    border-radius: 5px;
-    padding: 10px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
     font-weight: 600;
-    transition: 0.3s;
+
+    text-decoration: none !important;
+
+    transition: all 0.25s ease;
 }
 
-.nav-link-admin:hover{
-    background-color:  #192a56;
+
+/* Hover */
+
+.nav-link-admin:hover {
+    background-color: #4da9ec;
+
     color: white !important;
-   
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(116, 192, 252, 0.25);
 }
 
-body.dark .nav-link-admin:hover{
-      background-color:  white;
+
+/* Dark Mode */
+
+body.dark .nav-link-admin {
+    background-color: rgb(116, 192, 252);
+
+    color: white !important;
+}
+
+body.dark .nav-link-admin:hover {
+    background-color: white;
+
     color: #192a56 !important;
+
+    box-shadow:
+        0 4px 10px rgba(255, 255, 255, 0.12);
 }
 
 
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
 
-/* end nav admin section */
+@media (max-width: 991px) {
+
+    .nav-link-admin {
+        width: 100%;
+
+        min-width: unset;
+
+        height: 44px;
+
+        margin-top: 10px;
+
+        text-align: center;
+    }
+
+}

@@ -1,25 +1,21 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
- .search-doctors {
+.search-doctors {
     padding: 100px 0;
-   
+}
 
-  
-} 
+.search-doctors input[type="text"] {
+    width: 50%;
+    border-radius: 40px;
+    padding: 10px;
+}
 
- .search-doctors input[type="text"] {
-  width: 50%;
-  border-radius: 40px;
-  padding: 10px;
-   
 
-  
-} 
-
+/* Doctor Card */
 
 .doctor {
     background: #fff;
@@ -28,12 +24,23 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     overflow: hidden;
+
+    /* Make all cards same height */
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .doctor:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
+
+
+/* Doctor Image */
 
 .doctor img {
     width: 200px;
@@ -42,11 +49,41 @@
     border-radius: 50%;
     border: 5px solid #f1f7ff;
     transition: 0.3s ease;
+
+    flex-shrink: 0;
 }
 
 .doctor:hover img {
     transform: scale(1.05);
 }
+
+
+/* No Image */
+
+.no-image {
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+    border: 5px solid #f1f7ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    color: #777;
+    background-color: #f8f8f8;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    flex-shrink: 0;
+}
+
+
+/* Doctor Name */
 
 .doctor h3 {
     color: #222;
@@ -54,11 +91,17 @@
     margin-bottom: 10px;
 }
 
+
+/* Specialization */
+
 .doctor h6 {
     color: #777;
     font-size: 15px;
     margin-bottom: 20px;
 }
+
+
+/* Details Button */
 
 .doctor a {
     padding: 10px 25px;
@@ -67,17 +110,19 @@
 }
 
 
-.search-doctors{
+/* Search Section */
+
+.search-doctors {
     background-color: whitesmoke;
 }
 
-/* dark mood */
 
-body.dark .search-doctors{
+/* Dark Mode */
+
+body.dark .search-doctors {
     background-color: black;
 }
 
-
-body.dark .doctor{
+body.dark .doctor {
     background-color: #dfe6e9;
 }

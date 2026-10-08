@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./Contact.css";
 
 function Contact() {
@@ -9,6 +10,36 @@ function Contact() {
     const API_URL = "http://127.0.0.1:8000/api";
 
     const navigate = useNavigate();
+
+    const [searchParams] = useSearchParams();
+
+    // =========================================
+    // DOCTOR DATA FROM DETAILS PAGE
+    // =========================================
+
+    const doctorFromDetails =
+        searchParams.get("doctor");
+
+    const doctorNameFromDetails =
+        searchParams.get("name");
+
+    const doctorSpecializationFromDetails =
+        searchParams.get("specialization");
+
+    console.log(
+        "DOCTOR ID FROM DETAILS:",
+        doctorFromDetails
+    );
+
+    console.log(
+        "DOCTOR NAME FROM DETAILS:",
+        doctorNameFromDetails
+    );
+
+    console.log(
+        "DOCTOR SPECIALIZATION FROM DETAILS:",
+        doctorSpecializationFromDetails
+    );
 
     // =========================================
     // TOKEN
@@ -31,17 +62,41 @@ function Contact() {
 
     const [doctors, setDoctors] = useState([]);
 
+    const [users, setUsers] = useState([]);
+
     const [schedules, setSchedules] = useState([]);
 
-    const [selectedDoctor, setSelectedDoctor] = useState("");
+    const [selectedDoctor, setSelectedDoctor] =
+        useState(doctorFromDetails || "");
 
-    const [selectedSchedule, setSelectedSchedule] = useState("");
+    const [selectedSchedule, setSelectedSchedule] =
+        useState("");
 
     const [formData, setFormData] = useState({
         appointment_date: "",
         appointment_time: "",
         notes: "",
     });
+
+    // =========================================
+    // SET DOCTOR FROM DETAILS
+    // =========================================
+
+    useEffect(() => {
+
+        if (doctorFromDetails) {
+
+            console.log(
+                "SETTING DOCTOR FROM DETAILS:",
+                doctorFromDetails
+            );
+
+            setSelectedDoctor(
+                doctorFromDetails
+            );
+        }
+
+    }, [doctorFromDetails]);
 
     // =========================================
     // GET USER FROM LOCAL STORAGE
@@ -97,25 +152,18 @@ function Contact() {
 
             try {
 
-                /*
-                If the user is logged in,
-                send the token.
-
-                If not logged in,
-                send the request normally.
-                */
-
-                const response = await axios.get(
-                    `${API_URL}/doctors`,
-                    token
-                        ? config
-                        : {
-                            headers: {
-                                Accept:
-                                    "application/json"
+                const response =
+                    await axios.get(
+                        `${API_URL}/doctors`,
+                        token
+                            ? config
+                            : {
+                                headers: {
+                                    Accept:
+                                        "application/json",
+                                },
                             }
-                        }
-                );
+                    );
 
                 const doctorData =
                     response.data.data ||
@@ -123,7 +171,7 @@ function Contact() {
                     [];
 
                 console.log(
-                    "DOCTORS:",
+                    "DOCTORS API:",
                     doctorData
                 );
 
@@ -147,12 +195,70 @@ function Contact() {
                     "BACKEND RESPONSE:",
                     error.response?.data
                 );
-
             }
-
         };
 
         getDoctors();
+
+    }, []);
+
+    // =========================================
+    // GET USERS
+    // =========================================
+
+    useEffect(() => {
+
+        const getUsers = async () => {
+
+            try {
+
+                const response =
+                    await axios.get(
+                        `${API_URL}/users`,
+                        token
+                            ? config
+                            : {
+                                headers: {
+                                    Accept:
+                                        "application/json",
+                                },
+                            }
+                    );
+
+                const userData =
+                    response.data.data ||
+                    response.data ||
+                    [];
+
+                console.log(
+                    "USERS API:",
+                    userData
+                );
+
+                setUsers(
+                    userData
+                );
+
+            } catch (error) {
+
+                console.log(
+                    "GET USERS ERROR:",
+                    error
+                );
+
+                console.log(
+                    "STATUS:",
+                    error.response?.status
+                );
+
+                console.log(
+                    "BACKEND RESPONSE:",
+                    error.response?.data
+                );
+            }
+        };
+
+        getUsers();
 
     }, []);
 
@@ -175,17 +281,18 @@ function Contact() {
 
             try {
 
-                const response = await axios.get(
-                    `${API_URL}/doctor_schedules`,
-                    token
-                        ? config
-                        : {
-                            headers: {
-                                Accept:
-                                    "application/json"
+                const response =
+                    await axios.get(
+                        `${API_URL}/doctor_schedules`,
+                        token
+                            ? config
+                            : {
+                                headers: {
+                                    Accept:
+                                        "application/json",
+                                },
                             }
-                        }
-                );
+                    );
 
                 const allSchedules =
                     response.data.data ||
@@ -231,7 +338,6 @@ function Contact() {
                     "BACKEND RESPONSE:",
                     error.response?.data
                 );
-
             }
         };
 
@@ -315,14 +421,10 @@ function Contact() {
 
         if (!user || !token) {
 
-            /*
-            Save the page that the user
-            wanted to return to.
-            */
-
             localStorage.setItem(
                 "redirectAfterLogin",
-                "/Contact"
+                window.location.pathname +
+                window.location.search
             );
 
             alert(
@@ -338,14 +440,14 @@ function Contact() {
         // CHECK DOCTOR
         // =========================================
 
-        // if (!selectedDoctor) {
+        if (!selectedDoctor) {
 
-        //     alert(
-        //         "Please select a doctor."
-        //     );
+            alert(
+                "Please select a doctor."
+            );
 
-        //     return;
-        // }
+            return;
+        }
 
         // =========================================
         // CHECK SCHEDULE
@@ -366,38 +468,14 @@ function Contact() {
 
         try {
 
-            const appointmentData = {
-
-                /*
-                Keep your current Backend exactly
-                as it is.
-
-                So we send user.id as patient_id
-                because this is what your current
-                AppointmentController expects.
-                */
-
-                patient_id:
-                    user.id,
-
-                doctor_id:
-                    selectedDoctor,
-
-                doctor_schedule_id:
-                    selectedSchedule,
-
-                appointment_date:
-                    formData.appointment_date,
-
-                appointment_time:
-                    formData.appointment_time,
-
-                status:
-                    "pending",
-
-                notes:
-                    formData.notes,
-            };
+   const appointmentData = {
+    patient_id: user.id,
+    doctor_id: selectedDoctor,
+    appointment_date: formData.appointment_date,
+    appointment_time: formData.appointment_time,
+    status: "pending",
+    notes: formData.notes,
+};
 
             console.log(
                 "APPOINTMENT DATA:",
@@ -437,11 +515,7 @@ function Contact() {
                 notes: "",
             });
 
-            setSelectedDoctor("");
-
             setSelectedSchedule("");
-
-            setSchedules([]);
 
         } catch (error) {
 
@@ -490,7 +564,8 @@ function Contact() {
 
             localStorage.setItem(
                 "redirectAfterLogin",
-                "/Contact"
+                window.location.pathname +
+                window.location.search
             );
 
             alert(
@@ -573,6 +648,10 @@ function Contact() {
         }
     };
 
+    // =========================================
+    // RETURN
+    // =========================================
+
     return (
         <div>
 
@@ -598,7 +677,7 @@ function Contact() {
                                         className="fa-solid fa-calendar-days fa-lg"
                                         style={{
                                             color:
-                                                "rgb(116, 192, 252)"
+                                                "rgb(116, 192, 252)",
                                         }}
                                     ></i>
 
@@ -678,57 +757,51 @@ function Contact() {
 
                                 {/* DOCTOR */}
 
-
-
                                 <select
                                     name="doctor"
                                     id="doctor"
                                     value={selectedDoctor}
                                     onChange={handleDoctorChange}
-                                    disabled
+                                    required
                                 >
+
                                     <option value="">
-                                        Select Doctor
-                                    </option>
-                                </select>
-
-
-                                {/* <select
-                                    name="doctor"
-                                    id="doctor"
-                                    value={selectedDoctor}
-                                    onChange={handleDoctorChange}
-                                >
-                                    <option
-                                        value=""
-                                        disabled
-                                    >
                                         Select Doctor
                                     </option>
 
                                     {doctors.map(
-                                        (doctor) => (
-                                            <option
-                                                key={doctor.id}
-                                                value={doctor.id}
-                                            >
-                                                Dr.{" "}
+                                        (doctor) => {
 
-                                                {doctor.first_name ||
-                                                    doctor.user?.first_name ||
-                                                    ""}{" "}
+                                            const doctorUser =
+                                                users.find(
+                                                    (user) =>
+                                                        Number(user.id) ===
+                                                        Number(doctor.user_id)
+                                                );
 
-                                                {doctor.last_name ||
-                                                    doctor.user?.last_name ||
-                                                    ""}
+                                            return (
+                                                <option
+                                                    key={doctor.id}
+                                                    value={doctor.id}
+                                                >
 
-                                                {doctor.specialization
-                                                    ? ` - ${doctor.specialization}`
-                                                    : ""}
-                                            </option>
-                                        )
+                                                    Dr.{" "}
+
+                                                    {doctorUser?.first_name || ""}{" "}
+
+                                                    {doctorUser?.last_name || ""}
+
+                                                    {doctor.specialization
+                                                        ? ` - ${doctor.specialization}`
+                                                        : ""}
+
+                                                </option>
+                                            );
+
+                                        }
                                     )}
-                                </select> */}
+
+                                </select>
 
                                 <br />
 
@@ -736,11 +809,18 @@ function Contact() {
 
                                 <select
                                     name="time"
-                                    value={selectedSchedule}
-                                    onChange={handleScheduleChange}
-                                    disabled={!selectedDoctor}
-                                    required
+                                    value={
+                                        selectedSchedule
+                                    }
+                                    onChange={
+                                        handleScheduleChange
+                                    }
+                                    disabled={
+                                        !selectedDoctor
+                                    }
+                                    // required
                                 >
+
                                     <option
                                         value=""
                                         disabled
@@ -751,18 +831,30 @@ function Contact() {
                                     {schedules.map(
                                         (schedule) => (
                                             <option
-                                                key={schedule.id}
-                                                value={schedule.id}
+                                                key={
+                                                    schedule.id
+                                                }
+                                                value={
+                                                    schedule.id
+                                                }
                                             >
-                                                {schedule.start_time}
+                                                {
+                                                    schedule.start_time
+                                                }
+
                                                 {" - "}
-                                                {schedule.end_time}
+
+                                                {
+                                                    schedule.end_time
+                                                }
                                             </option>
                                         )
                                     )}
+
                                 </select>
 
                                 <br />
+
                                 {/* PAYMENT */}
 
                                 <select
@@ -825,7 +917,7 @@ function Contact() {
 
                                 <button
                                     type="button"
-                                    className="btn btn-dark  w-50 p-2 mt-3"
+                                    className="btn btn-dark w-50 p-2 mt-3"
                                     onClick={
                                         handleCancelAppointment
                                     }
@@ -869,7 +961,7 @@ function Contact() {
                                         className="fa-solid fa-location-dot"
                                         style={{
                                             color:
-                                                "rgb(59, 167, 255)"
+                                                "rgb(59, 167, 255)",
                                         }}
                                     ></i>
 
@@ -885,7 +977,7 @@ function Contact() {
                                         className="fa-solid fa-phone"
                                         style={{
                                             color:
-                                                "rgb(59, 167, 255)"
+                                                "rgb(59, 167, 255)",
                                         }}
                                     ></i>
 
@@ -899,7 +991,7 @@ function Contact() {
                                         className="fa-regular fa-envelope"
                                         style={{
                                             color:
-                                                "rgb(59, 167, 255)"
+                                                "rgb(59, 167, 255)",
                                         }}
                                     ></i>
 
@@ -944,7 +1036,7 @@ function Contact() {
                                             className="fa-brands fa-facebook-f"
                                             style={{
                                                 color:
-                                                    "rgb(235, 244, 250)"
+                                                    "rgb(235, 244, 250)",
                                             }}
                                         ></i>
 
@@ -959,7 +1051,7 @@ function Contact() {
                                             className="fa-brands fa-twitter"
                                             style={{
                                                 color:
-                                                    "rgb(235, 244, 250)"
+                                                    "rgb(235, 244, 250)",
                                             }}
                                         ></i>
 
@@ -974,7 +1066,7 @@ function Contact() {
                                             className="fa-brands fa-instagram"
                                             style={{
                                                 color:
-                                                    "rgb(235, 244, 250)"
+                                                    "rgb(235, 244, 250)",
                                             }}
                                         ></i>
 
@@ -993,7 +1085,7 @@ function Contact() {
                                 width="100%"
                                 height="450"
                                 style={{
-                                    border: 0
+                                    border: 0,
                                 }}
                                 allowFullScreen
                                 loading="lazy"

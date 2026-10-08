@@ -674,62 +674,466 @@ body.dark .doctor-table tbody tr:hover {
 /* RESPONSIVE */
 /* ================================= */
 
+/* ================================= */
+/* RESPONSIVE - LARGE TABLET / MD */
+/* ================================= */
+
 @media (max-width: 992px) {
+
+    .doctor-management {
+        padding: 100px 20px 50px;
+        overflow-x: hidden;
+    }
 
     .doctor-page-header {
         flex-direction: column;
-
         align-items: stretch;
+        gap: 18px;
+    }
+
+    .doctor-page-title {
+        width: 100%;
     }
 
     .doctor-header-actions {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
     }
 
     .create-doctor-btn {
+        min-width: 0;
         flex: 1;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .doctor-management {
-        padding: 80px 20px 40px;
-    }
-
-    .doctor-page-title h2 {
-        font-size: 24px;
-    }
-
-    .doctor-header-actions {
-        flex-direction: column;
-    }
-
-    .create-doctor-btn {
-        width: 100%;
     }
 
     .doctor-header-actions .btn {
-        width: 100%;
+        margin-left: 0;
+        min-width: 130px;
     }
 
     .doctor-form-section {
-        padding: 22px 18px;
-    }
-
-    .doctor-form-buttons {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .save-doctor-btn,
-    .cancel-doctor-btn {
-        width: 100%;
+        padding: 25px 22px;
     }
 
     .doctor-table {
         min-width: 1000px;
     }
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
+
+/* ================================= */
+/* RESPONSIVE - TABLET / SM */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    .doctor-management {
+        min-height: 100vh;
+        padding: 85px 15px 40px;
+        overflow-x: hidden;
+    }
+
+    /* PAGE HEADER */
+
+    .doctor-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        margin-bottom: 25px;
+        padding-bottom: 18px;
+    }
+
+    .doctor-page-title {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .doctor-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 20px;
+    }
+
+    .doctor-page-title h2 {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .doctor-page-title p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+    /* HEADER BUTTONS */
+
+    .doctor-header-actions {
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .create-doctor-btn {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        padding: 0 15px;
+        font-size: 14px;
+    }
+
+    .doctor-header-actions .btn {
+        width: auto;
+        min-width: 120px;
+        height: 46px;
+        margin-left: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+
+    /* FORM */
+
+    .doctor-form-section {
+        width: 100%;
+        padding: 22px 18px;
+        margin-bottom: 25px;
+    }
+
+    .doctor-form-header {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .doctor-form-header h3 {
+        font-size: 20px;
+    }
+
+    .doctor-form-header p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .doctor-form-section .form-group {
+        margin-bottom: 15px;
+    }
+
+    .doctor-form-section .form-control {
+        height: 43px;
+        font-size: 14px;
+    }
+
+    .doctor-form-subtitle {
+        font-size: 18px;
+    }
+
+
+    /* FORM BUTTONS */
+
+    .doctor-form-buttons {
+        width: 100%;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .save-doctor-btn,
+    .cancel-doctor-btn {
+        flex: 1;
+        min-width: 0;
+        height: 43px;
+    }
+
+
+    /* DOCTORS SECTION */
+
+    .doctors-section {
+        width: 100%;
+        border-radius: 9px;
+    }
+
+    .doctors-section-header {
+        padding: 18px;
+    }
+
+    .doctors-section-header h3 {
+        font-size: 19px;
+    }
+
+    .doctors-section-header p {
+        font-size: 12px;
+    }
+
+
+    /* TABLE */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .doctor-table {
+        min-width: 1000px;
+        width: 1000px;
+    }
+
+    .doctor-table thead th {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+
+    .doctor-table tbody td {
+        padding: 13px 12px;
+        font-size: 12px;
+    }
+}
+
+
+/* ================================= */
+/* RESPONSIVE - MOBILE / XS */
+/* ================================= */
+
+@media (max-width: 576px) {
+
+    .doctor-management {
+        padding: 80px 10px 30px;
+    }
+
+
+    /* PAGE TITLE */
+
+    .doctor-page-title {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .doctor-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 18px;
+    }
+
+    .doctor-page-title h2 {
+        font-size: 20px;
+    }
+
+    .doctor-page-title p {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+
+    /* HEADER ACTIONS */
+
+    .doctor-header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .create-doctor-btn {
+        width: 100%;
+        min-width: 100%;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .doctor-header-actions .btn {
+        width: 100%;
+        min-width: 100%;
+        height: 44px;
+        margin-left: 0 !important;
+        font-size: 13px;
+    }
+
+
+    /* FORM */
+
+    .doctor-form-section {
+        padding: 18px 14px;
+        border-radius: 8px;
+    }
+
+    .doctor-form-header {
+        align-items: center;
+    }
+
+    .doctor-form-header h3 {
+        font-size: 18px;
+    }
+
+    .doctor-form-header p {
+        font-size: 12px;
+    }
+
+    .form-close-btn {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+    }
+
+
+    /* FORM COLUMNS */
+
+    .doctor-form-section .row {
+        margin-left: -7px;
+        margin-right: -7px;
+    }
+
+    .doctor-form-section .col-md-6,
+    .doctor-form-section .col-md-12 {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+
+    /* FORM INPUTS */
+
+    .doctor-form-section label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .doctor-form-section .form-control {
+        height: 42px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    .doctor-form-section textarea.form-control {
+        height: auto;
+        min-height: 100px;
+    }
+
+
+    /* FORM BUTTONS */
+
+    .doctor-form-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .save-doctor-btn,
+    .cancel-doctor-btn {
+        width: 100%;
+        min-width: 100%;
+        height: 42px;
+    }
+
+
+    /* DOCTORS SECTION */
+
+    .doctors-section-header {
+        padding: 16px 14px;
+    }
+
+    .doctors-section-header h3 {
+        font-size: 18px;
+    }
+
+    .doctors-section-header p {
+        font-size: 12px;
+    }
+
+
+    /* TABLE */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-radius: 0;
+    }
+
+    .doctor-table {
+        min-width: 950px;
+        width: 950px;
+    }
+
+    .doctor-table thead th {
+        padding: 12px 10px;
+        font-size: 12px;
+    }
+
+    .doctor-table tbody td {
+        padding: 11px 10px;
+        font-size: 12px;
+    }
+
+
+    /* IMAGE */
+
+    .doctor-table tbody td img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+
+    /* ACTION BUTTONS */
+
+    .action-buttons {
+        gap: 5px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 31px;
+        height: 31px;
+        font-size: 12px;
+    }
+}
+
+
+/* ================================= */
+/* VERY SMALL MOBILE */
+/* ================================= */
+
+@media (max-width: 400px) {
+
+    .doctor-management {
+        padding: 75px 8px 25px;
+    }
+
+    .doctor-page-title h2 {
+        font-size: 18px;
+    }
+
+    .doctor-page-title p {
+        font-size: 11px;
+    }
+
+    .doctor-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 16px;
+    }
+
+    .doctor-form-section {
+        padding: 15px 11px;
+    }
+
+    .doctor-form-header h3 {
+        font-size: 17px;
+    }
+
+    .doctor-table {
+        min-width: 900px;
+        width: 900px;
+    }
+}

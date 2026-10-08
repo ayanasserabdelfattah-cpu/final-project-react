@@ -168,7 +168,7 @@ function AdminDashboard() {
 
                     {/* Patients */}
 
-                    <div className="col-md-3 mb-4">
+                    <div className="col-md-6 mb-4">
 
                         <div className="dashboard-card">
 
@@ -198,7 +198,7 @@ function AdminDashboard() {
 
                     {/* Doctors */}
 
-                    <div className="col-md-3 mb-4">
+                    <div className="col-md-6 mb-4">
 
                         <div className="dashboard-card">
 
@@ -228,7 +228,7 @@ function AdminDashboard() {
 
                     {/* Reception */}
 
-                    <div className="col-md-3 mb-4">
+                    <div className="col-md-6 mb-4">
 
                         <div className="dashboard-card">
 
@@ -258,7 +258,7 @@ function AdminDashboard() {
 
                     {/* Admins */}
 
-                    <div className="col-md-3 mb-4">
+                    <div className="col-md-6 mb-4">
 
                         <div className="dashboard-card">
 
@@ -290,7 +290,7 @@ function AdminDashboard() {
 
                     {/* users */}
 
-                    <div className="col-md-3 mb-4">
+                    <div className="col-md-6 mb-4">
 
                         <div className="dashboard-card">
 

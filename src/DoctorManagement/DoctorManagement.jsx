@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NavbarDashboard from "../NavbarDashboard/NavbarDashboard";
@@ -40,36 +41,9 @@ function DoctorManagement() {
 
     const API_URL = "http://127.0.0.1:8000";
 
-    // =========================================
-    // IMAGE URL
-    // =========================================
-
-    const getImageUrl = (imagePath) => {
-        if (!imagePath) {
-            return "";
-        }
-
-        if (
-            imagePath.startsWith("http://") ||
-            imagePath.startsWith("https://")
-        ) {
-            return imagePath;
-        }
-
-        if (imagePath.startsWith("/storage/")) {
-            return `${API_URL}${imagePath}`;
-        }
-
-        if (imagePath.startsWith("storage/")) {
-            return `${API_URL}/${imagePath}`;
-        }
-
-        return `${API_URL}/storage/${imagePath}`;
-    };
-
-    // =========================================
+    // ==========================================
     // GET DOCTORS
-    // =========================================
+    // ==========================================
 
     useEffect(() => {
         const getDoctors = async () => {
@@ -94,65 +68,50 @@ function DoctorManagement() {
                     doctorsResponse.data ||
                     [];
 
-                console.log(
-                    "USERS API DATA:",
-                    users
-                );
+                console.log("USERS API DATA:", users);
+                console.log("DOCTORS API DATA:", doctorRecords);
 
-                console.log(
-                    "DOCTORS API DATA:",
-                    doctorRecords
-                );
-
-                // Users whose role is Doctor
                 const doctorUsers = users.filter(
                     (user) => Number(user.role_id) === 2
                 );
 
-                console.log(
-                    "DOCTOR USERS:",
-                    doctorUsers
-                );
+                console.log("DOCTOR USERS:", doctorUsers);
 
-                // Combine User + Doctor data
-                const combinedDoctors = doctorUsers.map(
-                    (user) => {
-                        const doctor = doctorRecords.find(
-                            (item) =>
-                                Number(item.user_id) ===
-                                Number(user.id)
-                        );
+                const combinedDoctors = doctorUsers.map((user) => {
+                    const doctor = doctorRecords.find(
+                        (item) =>
+                            Number(item.user_id) === Number(user.id)
+                    );
 
-                        return {
-                            ...user,
+                    return {
+                        ...user,
 
-                            doctor_id:
-                                doctor?.id || null,
+                        doctor_id: doctor?.id || null,
 
-                            license_number:
-                                doctor?.license_number || "",
+                        // الصورة من doctors فقط
+                        profile_image: doctor?.profile_image || "",
 
-                            qualification:
-                                doctor?.qualification || "",
+                        license_number:
+                            doctor?.license_number || "",
 
-                            specialization:
-                                doctor?.specialization || "",
+                        qualification:
+                            doctor?.qualification || "",
 
-                            experience_years:
-                                doctor?.experience_years ?? "",
+                        specialization:
+                            doctor?.specialization || "",
 
-                            bio:
-                                doctor?.bio || "",
+                        experience_years:
+                            doctor?.experience_years ?? "",
 
-                            consultation_fee:
-                                doctor?.consultation_fee ?? "",
+                        bio: doctor?.bio || "",
 
-                            doctor_status:
-                                doctor?.status ??
-                                user.status,
-                        };
-                    }
-                );
+                        consultation_fee:
+                            doctor?.consultation_fee ?? "",
+
+                        doctor_status:
+                            doctor?.status ?? user.status,
+                    };
+                });
 
                 setDoctors(combinedDoctors);
 
@@ -160,17 +119,9 @@ function DoctorManagement() {
                     "GET DOCTORS SUCCESS:",
                     combinedDoctors
                 );
-
             } catch (error) {
-                console.log(
-                    "GET DOCTORS ERROR:",
-                    error
-                );
-
-                console.log(
-                    "STATUS:",
-                    error.response?.status
-                );
+                console.log("GET DOCTORS ERROR:", error);
+                console.log("STATUS:", error.response?.status);
 
                 console.log(
                     "BACKEND RESPONSE:",
@@ -186,9 +137,9 @@ function DoctorManagement() {
         getDoctors();
     }, [refresh]);
 
-    // =========================================
+    // ==========================================
     // HANDLE CHANGE
-    // =========================================
+    // ==========================================
 
     const handleChange = (e) => {
         setFormData({
@@ -197,9 +148,9 @@ function DoctorManagement() {
         });
     };
 
-    // =========================================
+    // ==========================================
     // HANDLE IMAGE CHANGE
-    // =========================================
+    // ==========================================
 
     const handleImageChange = (e) => {
         const file = e.target.files[0] || null;
@@ -210,9 +161,9 @@ function DoctorManagement() {
         });
     };
 
-    // =========================================
+    // ==========================================
     // RESET FORM
-    // =========================================
+    // ==========================================
 
     const resetForm = () => {
         setFormData({
@@ -237,36 +188,35 @@ function DoctorManagement() {
         setEditingId(null);
     };
 
-    // =========================================
+    // ==========================================
     // OPEN CREATE FORM
-    // =========================================
+    // ==========================================
 
     const openCreateForm = () => {
         resetForm();
         setShowForm(true);
     };
 
-    // =========================================
+    // ==========================================
     // CLOSE FORM
-    // =========================================
+    // ==========================================
 
     const closeForm = () => {
         resetForm();
         setShowForm(false);
     };
 
-    // =========================================
+    // ==========================================
     // CREATE DOCTOR
-    // =========================================
+    // ==========================================
 
     const handleCreate = async (e) => {
         e.preventDefault();
 
         try {
-            // =====================================
-            // STEP 1
+            // ==================================
             // CREATE USER
-            // =====================================
+            // ==================================
 
             const userData = new FormData();
 
@@ -300,17 +250,8 @@ function DoctorManagement() {
                 "2"
             );
 
-            if (formData.profile_image) {
-                userData.append(
-                    "profile_image",
-                    formData.profile_image
-                );
-            }
-
-            console.log(
-                "PROFILE IMAGE:",
-                formData.profile_image
-            );
+            // IMPORTANT:
+            // profile_image is NOT sent to /api/users
 
             const userResponse = await axios.post(
                 `${API_URL}/api/users`,
@@ -323,16 +264,11 @@ function DoctorManagement() {
                 userResponse.data
             );
 
-            // =====================================
-            // GET NEW USER ID
-            // =====================================
-
             const newUser =
                 userResponse.data.user ||
                 userResponse.data.data;
 
-            const newUserId =
-                newUser?.id;
+            const newUserId = newUser?.id;
 
             console.log(
                 "NEW USER ID:",
@@ -345,16 +281,14 @@ function DoctorManagement() {
                 );
             }
 
-            // =====================================
-            // STEP 2
-            // GET DOCTORS
-            // =====================================
+            // ==================================
+            // GET AUTO CREATED DOCTOR
+            // ==================================
 
-            const doctorsResponse =
-                await axios.get(
-                    `${API_URL}/api/doctors`,
-                    config
-                );
+            const doctorsResponse = await axios.get(
+                `${API_URL}/api/doctors`,
+                config
+            );
 
             const doctorRecords =
                 doctorsResponse.data.data ||
@@ -366,16 +300,11 @@ function DoctorManagement() {
                 doctorRecords
             );
 
-            // =====================================
-            // FIND AUTO-CREATED DOCTOR
-            // =====================================
-
-            const newDoctor =
-                doctorRecords.find(
-                    (doctor) =>
-                        Number(doctor.user_id) ===
-                        Number(newUserId)
-                );
+            const newDoctor = doctorRecords.find(
+                (doctor) =>
+                    Number(doctor.user_id) ===
+                    Number(newUserId)
+            );
 
             console.log(
                 "NEW AUTO CREATED DOCTOR:",
@@ -388,49 +317,103 @@ function DoctorManagement() {
                 );
             }
 
-            // =====================================
-            // STEP 3
+            // ==================================
             // UPDATE DOCTOR
-            // =====================================
+            // ==================================
 
-            const doctorData = {
-                user_id: newUserId,
+            const doctorData = new FormData();
 
-                license_number:
-                    formData.license_number,
+            doctorData.append(
+                "user_id",
+                String(newUserId)
+            );
 
-                qualification:
-                    formData.qualification,
+            doctorData.append(
+                "license_number",
+                String(
+                    formData.license_number || ""
+                )
+            );
 
-                specialization:
-                    formData.specialization,
+            doctorData.append(
+                "qualification",
+                String(
+                    formData.qualification || ""
+                )
+            );
 
-                experience_years:
-                    Number(
-                        formData.experience_years
-                    ),
+            doctorData.append(
+                "specialization",
+                String(
+                    formData.specialization || ""
+                )
+            );
 
-                bio:
-                    formData.bio,
+            doctorData.append(
+                "experience_years",
+                String(
+                    formData.experience_years || ""
+                )
+            );
 
-                consultation_fee:
-                    Number(
-                        formData.consultation_fee
-                    ),
+            doctorData.append(
+                "bio",
+                String(
+                    formData.bio || ""
+                )
+            );
 
-                status:
-                    Number(formData.status),
-            };
+            doctorData.append(
+                "consultation_fee",
+                String(
+                    formData.consultation_fee || "0"
+                )
+            );
+
+            doctorData.append(
+                "status",
+                String(formData.status)
+            );
+
+            // ==================================
+            // PROFILE IMAGE -> DOCTORS ONLY
+            // ==================================
+
+            if (
+                formData.profile_image instanceof File
+            ) {
+                doctorData.append(
+                    "profile_image",
+                    formData.profile_image
+                );
+            }
+
+            doctorData.append(
+                "_method",
+                "PUT"
+            );
 
             console.log(
                 "DOCTOR DATA:",
                 doctorData
             );
 
-            await axios.put(
+            console.log(
+                "SELECTED IMAGE:",
+                formData.profile_image
+            );
+
+            await axios.post(
                 `${API_URL}/api/doctors/${newDoctor.id}`,
                 doctorData,
-                config
+                {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`,
+                        "Content-Type":
+                            "multipart/form-data",
+                    },
+                }
             );
 
             alert(
@@ -442,7 +425,6 @@ function DoctorManagement() {
             setRefresh(
                 (item) => item + 1
             );
-
         } catch (error) {
             console.log(
                 "CREATE DOCTOR ERROR:",
@@ -467,7 +449,7 @@ function DoctorManagement() {
                 "VALIDATION ERRORS:",
                 JSON.stringify(
                     error.response?.data?.errors ||
-                    error.response?.data?.data,
+                        error.response?.data?.data,
                     null,
                     2
                 )
@@ -475,15 +457,15 @@ function DoctorManagement() {
 
             alert(
                 error.response?.data?.message ||
-                error.message ||
-                "Create Doctor failed. Check Console."
+                    error.message ||
+                    "Create Doctor failed. Check Console."
             );
         }
     };
 
-    // =========================================
+    // ==========================================
     // EDIT DOCTOR
-    // =========================================
+    // ==========================================
 
     const handleEdit = (doctor) => {
         setEditingId(doctor.id);
@@ -503,7 +485,6 @@ function DoctorManagement() {
 
             password: "",
 
-            // New image is optional during edit
             profile_image: null,
 
             license_number:
@@ -524,12 +505,11 @@ function DoctorManagement() {
             consultation_fee:
                 doctor.consultation_fee ?? "",
 
-            status:
-                String(
-                    doctor.doctor_status ??
+            status: String(
+                doctor.doctor_status ??
                     doctor.status ??
                     "1"
-                ),
+            ),
         });
 
         setShowForm(true);
@@ -540,9 +520,9 @@ function DoctorManagement() {
         });
     };
 
-    // =========================================
+    // ==========================================
     // UPDATE DOCTOR
-    // =========================================
+    // ==========================================
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -561,10 +541,9 @@ function DoctorManagement() {
         }
 
         try {
-            // =====================================
-            // STEP 1
+            // ==================================
             // UPDATE USER
-            // =====================================
+            // ==================================
 
             const userData = new FormData();
 
@@ -602,22 +581,11 @@ function DoctorManagement() {
                 );
             }
 
-            if (formData.profile_image) {
-                userData.append(
-                    "profile_image",
-                    formData.profile_image
-                );
-            }
+            // profile_image NOT sent to users
 
-            // Laravel method spoofing
             userData.append(
                 "_method",
                 "PUT"
-            );
-
-            console.log(
-                "PROFILE IMAGE UPDATE:",
-                formData.profile_image
             );
 
             await axios.post(
@@ -626,51 +594,106 @@ function DoctorManagement() {
                 config
             );
 
-            // =====================================
-            // STEP 2
+            // ==================================
             // UPDATE DOCTOR
-            // =====================================
+            // ==================================
 
             if (doctor.doctor_id) {
-                const doctorData = {
-                    user_id:
-                        doctor.id,
+                const doctorData =
+                    new FormData();
 
-                    license_number:
-                        formData.license_number,
+                doctorData.append(
+                    "user_id",
+                    String(doctor.id)
+                );
 
-                    qualification:
-                        formData.qualification,
+                doctorData.append(
+                    "license_number",
+                    String(
+                        formData.license_number || ""
+                    )
+                );
 
-                    specialization:
-                        formData.specialization,
+                doctorData.append(
+                    "qualification",
+                    String(
+                        formData.qualification || ""
+                    )
+                );
 
-                    experience_years:
-                        Number(
-                            formData.experience_years
-                        ),
+                doctorData.append(
+                    "specialization",
+                    String(
+                        formData.specialization || ""
+                    )
+                );
 
-                    bio:
-                        formData.bio,
+                doctorData.append(
+                    "experience_years",
+                    String(
+                        formData.experience_years || ""
+                    )
+                );
 
-                    consultation_fee:
-                        Number(
-                            formData.consultation_fee
-                        ),
+                doctorData.append(
+                    "bio",
+                    String(
+                        formData.bio || ""
+                    )
+                );
 
-                    status:
-                        Number(formData.status),
-                };
+                doctorData.append(
+                    "consultation_fee",
+                    String(
+                        formData.consultation_fee ||
+                            "0"
+                    )
+                );
+
+                doctorData.append(
+                    "status",
+                    String(formData.status)
+                );
+
+                // ==================================
+                // NEW PROFILE IMAGE
+                // ==================================
+
+                if (
+                    formData.profile_image instanceof File
+                ) {
+                    doctorData.append(
+                        "profile_image",
+                        formData.profile_image
+                    );
+                }
+
+                doctorData.append(
+                    "_method",
+                    "PUT"
+                );
 
                 console.log(
                     "DOCTOR UPDATE DATA:",
                     doctorData
                 );
 
-                await axios.put(
+                console.log(
+                    "SELECTED IMAGE:",
+                    formData.profile_image
+                );
+
+                await axios.post(
                     `${API_URL}/api/doctors/${doctor.doctor_id}`,
                     doctorData,
-                    config
+                    {
+                        headers: {
+                            Authorization:
+                                `Bearer ${token}`,
+                            "Content-Type":
+                                "multipart/form-data",
+                        },
+                    }
                 );
             }
 
@@ -683,7 +706,6 @@ function DoctorManagement() {
             setRefresh(
                 (item) => item + 1
             );
-
         } catch (error) {
             console.log(
                 "UPDATE DOCTOR ERROR:",
@@ -708,7 +730,7 @@ function DoctorManagement() {
                 "VALIDATION ERRORS:",
                 JSON.stringify(
                     error.response?.data?.errors ||
-                    error.response?.data?.data,
+                        error.response?.data?.data,
                     null,
                     2
                 )
@@ -716,14 +738,14 @@ function DoctorManagement() {
 
             alert(
                 error.response?.data?.message ||
-                "Update Doctor failed. Check Console."
+                    "Update Doctor failed. Check Console."
             );
         }
     };
 
-    // =========================================
+    // ==========================================
     // SUBMIT
-    // =========================================
+    // ==========================================
 
     const handleSubmit = (e) => {
         if (editingId === null) {
@@ -733,9 +755,9 @@ function DoctorManagement() {
         }
     };
 
-    // =========================================
+    // ==========================================
     // DELETE DOCTOR
-    // =========================================
+    // ==========================================
 
     const handleDelete = async (doctor) => {
         const confirmDelete =
@@ -743,9 +765,7 @@ function DoctorManagement() {
                 "Are you sure you want to delete this doctor?"
             );
 
-        if (!confirmDelete) {
-            return;
-        }
+        if (!confirmDelete) return;
 
         try {
             await axios.delete(
@@ -760,7 +780,6 @@ function DoctorManagement() {
             setRefresh(
                 (item) => item + 1
             );
-
         } catch (error) {
             console.log(
                 "DELETE DOCTOR ERROR:",
@@ -783,10 +802,14 @@ function DoctorManagement() {
 
             alert(
                 error.response?.data?.message ||
-                "Delete Doctor failed. Check Console."
+                    "Delete Doctor failed. Check Console."
             );
         }
     };
+
+    // ==========================================
+    // RETURN
+    // ==========================================
 
     return (
         <div>
@@ -797,18 +820,14 @@ function DoctorManagement() {
 
                 <div className="container">
 
-                    {/* =================================
-                        PAGE HEADER
-                    ================================= */}
+                    {/* PAGE HEADER */}
 
                     <div className="doctor-page-header">
 
                         <div className="doctor-page-title">
 
                             <div className="doctor-icon">
-
                                 <i className="fa-solid fa-user-doctor"></i>
-
                             </div>
 
                             <div>
@@ -830,34 +849,27 @@ function DoctorManagement() {
                             <button
                                 type="button"
                                 className="create-doctor-btn"
-                                onClick={openCreateForm}
+                                onClick={
+                                    openCreateForm
+                                }
                             >
-
                                 <i className="fa-solid fa-plus"></i>
-
                                 Create New Doctor
-
                             </button>
 
                             <Link
                                 to="/AdminDashboard"
                                 className="btn btn-dark"
                             >
-
                                 <i className="fa-solid fa-arrow-left mr-2"></i>
-
                                 Go back
-
                             </Link>
 
                         </div>
 
                     </div>
 
-
-                    {/* =================================
-                        FORM
-                    ================================= */}
+                    {/* FORM */}
 
                     {showForm && (
 
@@ -868,19 +880,15 @@ function DoctorManagement() {
                                 <div>
 
                                     <h3>
-
                                         {editingId === null
                                             ? "Create New Doctor"
                                             : "Edit Doctor"}
-
                                     </h3>
 
                                     <p>
-
                                         {editingId === null
                                             ? "Add doctor account and professional information"
                                             : "Update doctor account and professional information"}
-
                                     </p>
 
                                 </div>
@@ -888,29 +896,28 @@ function DoctorManagement() {
                                 <button
                                     type="button"
                                     className="form-close-btn"
-                                    onClick={closeForm}
+                                    onClick={
+                                        closeForm
+                                    }
                                 >
-
                                     <i className="fa-solid fa-xmark"></i>
-
                                 </button>
 
                             </div>
 
+                            <form
+                                onSubmit={
+                                    handleSubmit
+                                }
+                            >
 
-                            <form onSubmit={handleSubmit}>
-
-                                {/* =================================
-                                    ACCOUNT INFORMATION
-                                ================================= */}
+                                {/* ACCOUNT INFORMATION */}
 
                                 <h4 className="doctor-form-subtitle">
                                     Account Information
                                 </h4>
 
                                 <div className="row">
-
-                                    {/* First Name */}
 
                                     <div className="col-md-6">
 
@@ -937,9 +944,6 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Last Name */}
-
                                     <div className="col-md-6">
 
                                         <div className="form-group">
@@ -964,9 +968,6 @@ function DoctorManagement() {
                                         </div>
 
                                     </div>
-
-
-                                    {/* Email */}
 
                                     <div className="col-md-6">
 
@@ -993,9 +994,6 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Phone */}
-
                                     <div className="col-md-6">
 
                                         <div className="form-group">
@@ -1021,19 +1019,14 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Password */}
-
                                     <div className="col-md-6">
 
                                         <div className="form-group">
 
                                             <label>
-
                                                 {editingId === null
                                                     ? "Password"
                                                     : "New Password"}
-
                                             </label>
 
                                             <input
@@ -1060,8 +1053,7 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Profile Image */}
+                                    {/* PROFILE IMAGE */}
 
                                     <div className="col-md-6">
 
@@ -1075,7 +1067,7 @@ function DoctorManagement() {
                                                 type="file"
                                                 name="profile_image"
                                                 className="form-control"
-                                                accept="image/*"
+                                                accept="image/jpeg,image/jpg,image/png,image/webp"
                                                 onChange={
                                                     handleImageChange
                                                 }
@@ -1084,41 +1076,57 @@ function DoctorManagement() {
                                                 }
                                             />
 
+                                            {/* CURRENT IMAGE */}
+
                                             {editingId !== null &&
                                                 formData.profile_image === null &&
                                                 doctors.find(
                                                     (item) =>
-                                                        Number(item.id) ===
-                                                        Number(editingId)
+                                                        Number(
+                                                            item.id
+                                                        ) ===
+                                                        Number(
+                                                            editingId
+                                                        )
                                                 )?.profile_image && (
+
                                                     <img
-                                                        src={getImageUrl(
+                                                        src={`${API_URL}/storage/${
                                                             doctors.find(
                                                                 (item) =>
-                                                                    Number(item.id) ===
-                                                                    Number(editingId)
-                                                            )?.profile_image
-                                                        )}
-                                                        alt="Current Doctor"
+                                                                    Number(
+                                                                        item.id
+                                                                    ) ===
+                                                                    Number(
+                                                                        editingId
+                                                                    )
+                                                            )
+                                                                ?.profile_image
+                                                        }`}
+                                                        alt=""
                                                         width="70"
                                                         height="70"
                                                         style={{
+                                                            width: "70px",
+                                                            height: "70px",
                                                             objectFit:
                                                                 "cover",
                                                             borderRadius:
                                                                 "50%",
                                                             marginTop:
                                                                 "10px",
+                                                            display:
+                                                                "block",
                                                         }}
                                                     />
+
                                                 )}
 
                                         </div>
 
                                     </div>
 
-
-                                    {/* Status */}
+                                    {/* STATUS */}
 
                                     <div className="col-md-6">
 
@@ -1153,8 +1161,7 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Role */}
+                                    {/* ROLE */}
 
                                     <div className="col-md-12">
 
@@ -1177,18 +1184,13 @@ function DoctorManagement() {
 
                                 </div>
 
-
-                                {/* =================================
-                                    PROFESSIONAL INFORMATION
-                                ================================= */}
+                                {/* PROFESSIONAL INFORMATION */}
 
                                 <h4 className="doctor-form-subtitle">
                                     Professional Information
                                 </h4>
 
                                 <div className="row">
-
-                                    {/* License Number */}
 
                                     <div className="col-md-6">
 
@@ -1215,9 +1217,6 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Qualification */}
-
                                     <div className="col-md-6">
 
                                         <div className="form-group">
@@ -1242,9 +1241,6 @@ function DoctorManagement() {
                                         </div>
 
                                     </div>
-
-
-                                    {/* Specialization */}
 
                                     <div className="col-md-6">
 
@@ -1271,9 +1267,6 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Experience */}
-
                                     <div className="col-md-6">
 
                                         <div className="form-group">
@@ -1299,9 +1292,6 @@ function DoctorManagement() {
                                         </div>
 
                                     </div>
-
-
-                                    {/* Consultation Fee */}
 
                                     <div className="col-md-6">
 
@@ -1330,9 +1320,6 @@ function DoctorManagement() {
 
                                     </div>
 
-
-                                    {/* Bio */}
-
                                     <div className="col-md-12">
 
                                         <div className="form-group">
@@ -1360,11 +1347,6 @@ function DoctorManagement() {
 
                                 </div>
 
-
-                                {/* =================================
-                                    BUTTONS
-                                ================================= */}
-
                                 <div className="doctor-form-buttons">
 
                                     <button
@@ -1383,11 +1365,11 @@ function DoctorManagement() {
                                     <button
                                         type="button"
                                         className="cancel-doctor-btn"
-                                        onClick={closeForm}
+                                        onClick={
+                                            closeForm
+                                        }
                                     >
-
                                         Cancel
-
                                     </button>
 
                                 </div>
@@ -1398,10 +1380,7 @@ function DoctorManagement() {
 
                     )}
 
-
-                    {/* =================================
-                        DOCTORS TABLE
-                    ================================= */}
+                    {/* DOCTORS SECTION */}
 
                     <div className="doctors-section">
 
@@ -1414,7 +1393,9 @@ function DoctorManagement() {
                                     Doctors
 
                                     <span className="badge badge-primary rounded-3 ml-2">
-                                        {doctors.length}
+                                        {
+                                            doctors.length
+                                        }
                                     </span>
 
                                 </h3>
@@ -1427,7 +1408,6 @@ function DoctorManagement() {
 
                         </div>
 
-
                         <div className="table-responsive">
 
                             <table className="table doctor-table">
@@ -1438,7 +1418,9 @@ function DoctorManagement() {
 
                                         <th>ID</th>
 
-                                        <th>Profile Image</th>
+                                        <th>
+                                            Profile Image
+                                        </th>
 
                                         <th>Name</th>
 
@@ -1446,9 +1428,13 @@ function DoctorManagement() {
 
                                         <th>Phone</th>
 
-                                        <th>Specialization</th>
+                                        <th>
+                                            Specialization
+                                        </th>
 
-                                        <th>Experience</th>
+                                        <th>
+                                            Experience
+                                        </th>
 
                                         <th>Fee</th>
 
@@ -1459,7 +1445,6 @@ function DoctorManagement() {
                                     </tr>
 
                                 </thead>
-
 
                                 <tbody>
 
@@ -1480,22 +1465,28 @@ function DoctorManagement() {
                                                         }
                                                     </td>
 
+                                                    {/* ==================================
+                                                        PROFILE IMAGE
+                                                    ================================== */}
+
                                                     <td>
 
                                                         {doctor.profile_image ? (
 
                                                             <img
-                                                                src={getImageUrl(
-                                                                    doctor.profile_image
-                                                                )}
-                                                                alt="Doctor"
+                                                                src={`${API_URL}/storage/${doctor.profile_image}`}
+                                                                alt=""
                                                                 width="50"
                                                                 height="50"
                                                                 style={{
+                                                                    width: "50px",
+                                                                    height: "50px",
                                                                     objectFit:
                                                                         "cover",
                                                                     borderRadius:
                                                                         "50%",
+                                                                    display:
+                                                                        "block",
                                                                 }}
                                                             />
 
@@ -1550,27 +1541,23 @@ function DoctorManagement() {
 
                                                     <td>
 
-                                                        {
-                                                            doctor.experience_years !==
-                                                                "" &&
-                                                            doctor.experience_years !==
-                                                                null
-                                                                ? `${doctor.experience_years} Years`
-                                                                : "—"
-                                                        }
+                                                        {doctor.experience_years !==
+                                                            "" &&
+                                                        doctor.experience_years !==
+                                                            null
+                                                            ? `${doctor.experience_years} Years`
+                                                            : "—"}
 
                                                     </td>
 
                                                     <td>
 
-                                                        {
-                                                            doctor.consultation_fee !==
-                                                                "" &&
-                                                            doctor.consultation_fee !==
-                                                                null
-                                                                ? `${doctor.consultation_fee} EGP`
-                                                                : "—"
-                                                        }
+                                                        {doctor.consultation_fee !==
+                                                            "" &&
+                                                        doctor.consultation_fee !==
+                                                            null
+                                                            ? `${doctor.consultation_fee} EGP`
+                                                            : "—"}
 
                                                     </td>
 
@@ -1580,21 +1567,20 @@ function DoctorManagement() {
                                                             className={
                                                                 String(
                                                                     doctor.doctor_status ??
-                                                                    doctor.status
-                                                                ) === "1"
+                                                                        doctor.status
+                                                                ) ===
+                                                                "1"
                                                                     ? "status-badge active"
                                                                     : "status-badge inactive"
                                                             }
                                                         >
 
-                                                            {
-                                                                String(
-                                                                    doctor.doctor_status ??
+                                                            {String(
+                                                                doctor.doctor_status ??
                                                                     doctor.status
-                                                                ) === "1"
-                                                                    ? "Active"
-                                                                    : "Inactive"
-                                                            }
+                                                            ) === "1"
+                                                                ? "Active"
+                                                                : "Inactive"}
 
                                                         </span>
 
@@ -1651,9 +1637,7 @@ function DoctorManagement() {
                                                 colSpan="10"
                                                 className="no-doctors"
                                             >
-
                                                 No doctors found
-
                                             </td>
 
                                         </tr>
